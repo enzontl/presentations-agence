@@ -66,3 +66,7 @@ Toutes les données sont fictives. Les 8 decks de test sont dans [`examples/deck
 Photos Unsplash, sous licence Unsplash : Nathan Dumlao, Eiliv Aceron, Anton Luk, Zoshua Colah, Thomas Bormans, Priscilla Du Preez.
 
 Le style « Studio sombre » reprend la direction artistique du deck [Are LEGO themes real universes?](https://github.com/enzontl/lego-universes).
+
+## Licence
+
+Code et textes du skill sous licence [MIT](LICENSE). Les photos des exemples restent sous licence Unsplash.
