@@ -1,0 +1,309 @@
+---
+name: presentations-agence
+description: "Crée, refait ou améliore une présentation de niveau agence, sans look généré par IA : deck, slides, pitch deck, keynote, soutenance, oral, business case, talk, deck investisseurs ou comex, présentation client, restitution d'étude, rapport ou PDF transformé en slides, slides à partir des photos ou graphiques de l'utilisateur. À utiliser même pour une demande courte qui ne parle pas de design (« fais-moi une présentation », « j'ai besoin de slides pour… », « make a pitch deck »), dès qu'un nombre de slides ou une date d'oral est donné, et quand un deck fait générique ou trop IA. Propose 8 styles tirés d'univers réels (éditorial objet réel, studio sombre, rapport suisse, une de journal, affiche sérigraphie, magazine de mode, data-journalisme, brutalisme web) avec fond avant forme, vraies photos traitées, rendu PNG vérifié, script dans les notes, export HTML. Pas pour : seulement un script oral, corriger des notes, convertir un PPTX en PDF, résumer un document, un graphique isolé, un design system d'app."
+---
+
+# Présentations de niveau agence
+
+Ce skill fabrique des decks qui ont l'air conçus par une agence. Le principe tient en une phrase : chaque deck emprunte les codes d'un univers visuel qui existe vraiment (un ticket de caisse, une une de journal, une affiche sérigraphiée, un rapport annuel suisse). Le format raconte le concept avant même que le texte soit lu.
+
+C'est l'inverse d'un template. Un template part d'une grille vide et la remplit. Ici, on part d'un objet réel et on y range le contenu. C'est ce qui supprime le look "généré par IA" : une IA moyenne produit des cartes, des icônes dans des ronds et des dégradés, parce que c'est la moyenne de ce qu'elle a vu. Un objet réel a des contraintes, des imperfections et une histoire, et ça se voit.
+
+Ce fichier contient le procédé commun à tous les styles. Chaque style a son fichier dans `references/`. **Lire en entier le fichier du style choisi avant de dessiner la première slide.**
+
+## Les 8 styles
+
+| Style | Fichier | Univers réel | Registre | Fond dominant |
+| --- | --- | --- | --- | --- |
+| Éditorial objet réel | `references/editorial-objet-reel.md` | Magazine + objets de l'univers du sujet (ticket, menu, billet) | Audacieux, drôle | Alterné sombre et crème |
+| Studio sombre | `references/studio-sombre.md` | Photo de produit en studio, objet 3D | Premium, sérieux | Bleu nuit |
+| Rapport suisse | `references/rapport-suisse.md` | Rapports annuels suisses, style typographique international | Rigoureux, sobre | Blanc papier |
+| Une de journal | `references/une-de-journal.md` | Presse quotidienne, éditions spéciales | Narratif, institutionnel | Papier journal |
+| Affiche sérigraphie | `references/affiche-serigraphie.md` | Affiches de concert, risographie, caractères en bois | Festif, engagé | Papier crème et encres |
+| Magazine de mode | `references/magazine-de-mode.md` | Couvertures et éditoriaux de magazines, lookbooks | Premium, image | Blanc et photo pleine page |
+| Data-journalisme | `references/data-journalisme.md` | Enquêtes graphiques de la presse | Démonstratif | Papier clair |
+| Brutalisme web | `references/brutalisme-web.md` | Premiers sites web, docs techniques, terminaux | Brut, tech, ironique | Blanc, noir, bleu lien |
+
+## Choisir le style
+
+### Selon le sujet
+
+| Signal dans le sujet | Style conseillé | Pourquoi |
+| --- | --- | --- |
+| Univers physique riche : commerce, restauration, sport, voyage, artisanat | Éditorial objet réel | Les objets de cet univers deviennent les layouts |
+| Un objet emblématique (bouteille, chaussure, puce, livre) et des données | Studio sombre | L'objet photographié en studio donne le ton premium |
+| Résultats, bilan, rapport, gouvernance, finance, RSE | Rapport suisse | La grille et la retenue inspirent confiance |
+| Annonce, transformation, actualité, institution qui raconte une étape | Une de journal | Le gros titre impose le message, les colonnes portent le détail |
+| Événement, festival, culture, campagne associative, vie de campus | Affiche sérigraphie | Énergie, couleurs d'encre, effet "collé en ville" |
+| Mode, beauté, design, art de vivre, marque à forte image | Magazine de mode | La photo domine, le texte se fait rare et élégant |
+| Étude, enquête, mémoire, analyse de marché, beaucoup de chiffres | Data-journalisme | Chaque slide démontre avec un graphique annoté |
+| Produit tech, outil pour développeurs, startup, public geek | Brutalisme web | Les codes bruts du web parlent à ce public, avec humour |
+
+### Selon le public
+
+| Public | Plutôt | À éviter |
+| --- | --- | --- |
+| Jury académique, soutenance | Data-journalisme, Rapport suisse, Studio sombre | Brutalisme web face à un jury classique |
+| Direction, investisseurs, conseil | Rapport suisse, Studio sombre, Data-journalisme | Affiche sérigraphie |
+| Client créatif, agence, marque | Objet réel, Magazine de mode, Sérigraphie | Rapport suisse, trop froid |
+| Grand public, conférence, salle large | Une de journal, Objet réel, Sérigraphie | Data-journalisme trop dense |
+| Développeurs, équipes produit | Brutalisme web, Data-journalisme | Magazine de mode |
+
+### Selon la marque
+
+- **Charte forte** : garder ses couleurs comme couleurs pop du style, et ses polices si elles existent sur Google Fonts. Le style apporte la mise en page, pas une nouvelle identité.
+- **Marque héritage** (or, bordeaux, marine, maison ancienne) : Studio sombre, Magazine de mode ou Rapport suisse.
+- **Marque jeune au ton décalé** : Objet réel, Sérigraphie ou Brutalisme web.
+- **Pas de marque** (projet, étude, mémoire) : le style vient du sujet et du public.
+
+Proposer toujours à l'utilisateur **deux styles adaptés**, avec une phrase de justification chacun, plus **une option de contraste** plus audacieuse. Un seul style par deck : mélanger deux univers casse l'illusion de l'objet réel.
+
+## Le procédé, dans l'ordre
+
+### 1. Le fond d'abord
+
+Aucune slide avant d'avoir trois choses : le message en une phrase, la storyline, les sources de chaque chiffre. Un beau deck sur un fond flou reste un deck faible, et retoucher la forme après coup coûte trois fois plus cher.
+
+1. Lire les consignes en entier. Repérer les parties imposées, la durée, le public, les critères d'évaluation.
+2. Ouvrir une page de travail qui suit ces parties (doc, Notion ou fichier `fond.md` dans le dossier du deck).
+3. Faire la recherche et sourcer chaque chiffre (source, date, lien). Ne jamais inventer un chiffre : s'il manque, le demander à l'utilisateur ou l'indiquer comme hypothèse.
+4. Écrire la storyline sous forme de liste de titres. Test : lus d'affilée, les titres doivent raconter toute l'histoire.
+
+### 2. Les questions de style
+
+Une seule salve de questions, toujours sous forme de choix (outil de question si disponible, sinon liste numérotée). Ne pas reposer une question à laquelle la demande répond déjà.
+
+1. **Le style** : deux styles recommandés et une option audacieuse, chacun avec son univers en une ligne.
+2. **Le fond dominant** : sombre, clair, ou alterné.
+3. **La langue** : une seule, ou une principale avec des punchlines dans une autre.
+4. **Les titres** : punchline + sous-titre clair (recommandé), phrase qui affirme la conclusion, ou mot seul.
+5. **L'élément signature** : trois éléments signature du style choisi, l'utilisateur en garde un ou deux.
+
+### 3. Poser le système du style
+
+Lire le fichier du style en entier. Puis écrire et faire valider, en un bloc court :
+
+- l'univers du sujet en 2 ou 3 mots et, pour les styles à objets, 6 à 10 objets-layouts associés aux types de contenu ;
+- la palette en hex, avec le rôle de chaque couleur ;
+- les polices et leur rôle ;
+- le ton en pourcentage (ex. 70 % audacieux, 30 % premium) ;
+- 5 interdits propres à ce deck.
+
+### 4. Les images
+
+Chercher, télécharger, traiter, placer. Voir la section "Pipeline images".
+
+### 5. Le template, avec une slide "règles"
+
+Premier livrable visuel : un petit deck de 6 à 10 slides.
+
+- **Slide 0 "règles"** : pastilles de la palette avec hex et rôle, polices avec leur rôle, les 5 interdits, l'élément signature. Elle sert de contrat visuel pour toute la suite.
+- **Un layout par type de contenu**, rempli avec le vrai contenu et les vraies images. Jamais de lorem ipsum ni de rectangle gris : un placeholder empêche de juger le rendu, et c'est exactement par là que le look template revient.
+
+Faire valider le template avant de produire tout le deck.
+
+### 6. La boucle de rendu
+
+À chaque version : rendre, regarder, corriger. Voir la section "Boucle de rendu".
+
+### 7. Les retours utilisateur
+
+Les retours typiques, à anticiper dès la première version :
+
+- **"Ça fait générique, trop IA"** : remplacer les grilles et les cartes par des layouts du style (typo géante, plein cadre, objets de l'univers).
+- **"Cette image revient trop, elle est mal détourée"** : une image par slide, et une photo entière plutôt qu'un détourage douteux.
+- **"On ne voit pas assez la marque"** : nom ou logo sur la cover et dans l'élément signature de chaque slide.
+- **"C'est trop chargé"** : garder trois niveaux de texte, déplacer le reste dans les notes.
+- **"On ne lit pas de loin"** : aucun texte sous 22 px sur la slide, sauf sources et légendes.
+- **"Ne touche pas à cette slide"** : la noter comme validée dans `fond.md` et ne plus jamais la retoucher, même pour harmoniser.
+
+### 8. Le deck final
+
+- Retirer la slide règles et les slides en trop.
+- Ordonner selon le récit et découper en sections (le sous-titre de section de chaque slide doit suivre ce découpage).
+- Écrire le script de chaque orateur dans les notes : phrases parlées, 30 à 60 secondes par slide, le prénom de l'orateur en tête s'il y en a plusieurs.
+- Mettre les crédits photo à la fin des notes de la slide concernée, et un récapitulatif dans les notes de la dernière slide.
+
+### 9. Les livrables annexes, si utile
+
+Script complet de l'oral, fiche de sources pour les questions du jury, export HTML autonome, PDF.
+
+## Structure technique du deck
+
+Le deck est un fichier HTML. Une slide = une `<section class="slide">` de 1920x1080, éléments en position absolue. Cette structure est la même pour tous les styles, ce qui permet aux scripts de rendu et d'export de marcher partout.
+
+```
+mon-deck/
+├── fond.md        brief, storyline, sources, slides validées, table images
+├── deck.html      toutes les slides
+├── base.css       copie de assets/base.css (structure, animations)
+├── style.css      le style choisi (jetons, classes du style)
+├── fonts/         polices locales + fonts.css (scripts/polices.py)
+├── raw/           photos téléchargées, non traitées
+├── assets/        photos traitées, textures
+└── renders/       PNG de chaque slide + planche contact
+```
+
+```html
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="deck">
+  <section class="slide" data-section="Le marché">
+    <img class="bg" src="assets/marche.jpg" alt="">
+    <h2 class="title" data-anim="rise" style="--i:1">Le titre qui conclut</h2>
+    <p class="sub" data-anim="rise" style="--i:2">Le sous-titre qui dit le fond.</p>
+    <aside class="notes">Script de l'orateur. Crédit photo : Prénom Nom, Unsplash.</aside>
+  </section>
+</body></html>
+```
+
+- `assets/base.css` fournit la structure, le compteur de pages (`.pageno`), l'image plein cadre (`.bg`) et les animations `rise`, `drop`, `slam`, `fade` déclenchées par `data-anim` et décalées de 120 ms par `--i`. Les animations ne jouent qu'en mode présentation : en rendu statique, chaque élément est dans son état final.
+- Chaque style a ses propres classes dans `style.css`. Le fichier du style les liste avec ses jetons CSS.
+- Les polices : `python scripts/polices.py "Anton" "Inter:wght@400;600" --out fonts/` télécharge les fichiers Google Fonts et écrit `fonts/fonts.css`. Des polices locales garantissent un rendu identique hors ligne et dans l'export.
+- **Si l'environnement propose un type d'artifact Slides ou un outil de présentation**, y transposer la même structure : une section par slide, mêmes classes, images uploadées dans l'espace d'assets de l'artifact et référencées par l'URL renvoyée. Garder une table "fichier vers URL" dans `fond.md`, utile pour les exports.
+
+## Pipeline images (commun à tous les styles)
+
+### 1. Les sources
+
+- **Unsplash** (gratuit, haute définition) pour les photos réelles : personnes, lieux, objets, textures.
+- **Visuels générés** (ChatGPT, Midjourney, Higgsfield...) seulement pour ce qui n'existe pas encore : un produit, une affiche de campagne, un packaging. Claude écrit les prompts, l'utilisateur génère et renvoie les images.
+- **Les photos de l'utilisateur** dès qu'il en a : ce sont les plus crédibles.
+- Jamais de photo d'une personnalité réelle.
+
+### 2. Les domaines à autoriser
+
+Le téléchargement depuis le shell ou l'environnement de code passe par `images.unsplash.com`. Selon l'environnement, l'utilisateur doit ajouter `unsplash.com` et `images.unsplash.com` aux domaines autorisés (dans Claude.ai : Paramètres, Capacités). Sans ça, rien ne se télécharge. Tester avec un `curl -I` avant de chercher des photos.
+
+### 3. Trouver l'URL exacte d'une photo
+
+Les pages HTML d'unsplash.com ont une protection anti-bot. Ne pas la contourner (pas de faux navigateur, pas d'API privée, pas de scraping) : passer par la recherche web puis par une lecture de page autorisée.
+
+1. Recherche web limitée au domaine `unsplash.com`, avec une requête précise : sujet + lumière + cadrage. Exemples : "market stall night close-up", "workshop hands top view dark", "portrait street natural light". Les requêtes en anglais donnent de meilleurs résultats.
+2. Lecture de la page photo trouvée (WebFetch ou équivalent) avec la consigne : "Return only the exact full URL of the main photo on images.unsplash.com, and the photographer's name". Lire plusieurs pages dans le même appel quand c'est possible.
+3. Télécharger en haute définition dans `raw/` :
+
+```bash
+curl -sSL "<url_sans_parametres>?fm=jpg&q=82&w=2200" -o raw/<nom>.jpg
+```
+
+4. Noter le nom du photographe dans la table images de `fond.md`, pour les crédits.
+
+Chercher 2 ou 3 candidates par slide et choisir en regardant les fichiers téléchargés : une photo se juge à l'œil, pas à sa description.
+
+### 4. Traiter chaque image
+
+Même traitement pour toutes les photos d'un deck, pour qu'il semble shooté par une seule personne. `scripts/images.py` fait tout, avec un préréglage par style :
+
+```bash
+python scripts/images.py traiter raw/x.jpg assets/x.jpg --taille 1920x1080 --preset chaud --sombre bas
+python scripts/images.py traiter raw/y.jpg assets/y.jpg --taille 960x1080 --preset presse --cadre 0.5,0.3
+python scripts/images.py texture papier assets/papier.jpg --couleur EFE3C8
+```
+
+| Étape | Ce qu'elle fait | Pourquoi |
+| --- | --- | --- |
+| Recadrage au format exact | Plein cadre 1920x1080, demi-écran 960x1080, bande, portrait. `--cadre x,y` choisit le centre | Le navigateur ne recadre jamais aussi bien qu'un choix humain |
+| Étalonnage | Saturation, chaleur, contraste, selon le préréglage du style | Unifie des photos de sources différentes |
+| Assombrissement sous le texte | Dégradé depuis le bas, la gauche, la droite ou le haut (`--sombre`) | Le texte reste lisible sans bandeau noir |
+| Grain | Bruit léger | Supprime l'aspect "image de banque" trop lisse |
+
+Préréglages : `chaud` (objet réel), `studio`, `neutre` (suisse), `presse` (journal, noir et blanc), `trame` (sérigraphie, bichromie tramée, avec `--encres`), `mode`, `doc` (data-journalisme), `pixel` (brutalisme, tramage 1 bit). Le fichier du style précise les réglages.
+
+Autres traitements :
+
+- **Textures** : `texture papier`, `texture sombre`, `texture journal`, `texture kraft`, réutilisées en `.bg` sous les slides sans photo.
+- **Compositions** : mur d'affiches, planche contact, pile de documents. Les construire avec PIL en collant les visuels de travers, avec ombre douce et léger pli.
+- **Détourages** : seulement des PNG propres (fond transparent, sans liseré, vérifiés en zoomant à 200 %). En cas de doute, photo entière.
+
+### 5. Placer
+
+- `<img class="bg" src="assets/x.jpg" alt="">` en premier enfant de la section pour un plein cadre.
+- **Règle absolue : une image = une slide.** La même photo sur deux slides donne immédiatement l'impression d'un manque de matière.
+- Crédits dans les notes de la slide (`Photo : Prénom Nom, Unsplash`).
+
+## Boucle de rendu (à chaque version)
+
+Regarder le rendu réel est la seule façon de voir ce que l'utilisateur verra. Le code HTML ne montre ni un titre sur trois lignes, ni un tampon qui cache un chiffre.
+
+```bash
+python scripts/rendu.py mon-deck/deck.html --out mon-deck/renders
+```
+
+Le script rend chaque slide en PNG 1920x1080 (Chrome sans interface, animations coupées, polices locales), assemble `planche.png` et écrit `rapport.txt` avec les problèmes détectés : titre sur 3 lignes ou plus, élément qui sort de la slide, texte coupé dans sa boîte, image manquante, police non chargée, texte trop petit. Option `--slides 3,5` pour ne rendre que certaines slides.
+
+Puis :
+
+1. Lire `rapport.txt`.
+2. Regarder `planche.png` : rythme, alternance des fonds, répétitions, cohérence.
+3. Ouvrir en taille réelle chaque slide modifiée ou signalée, et la regarder vraiment.
+4. Corriger : titre sur 3 lignes ou plus, texte sous un tampon, élément qui déborde, chiffre trop large, contraste faible, deux slides consécutives trop semblables.
+5. Recommencer jusqu'à un rapport vide et une planche sans défaut visible.
+
+Un élément volontairement coupé par le bord (titre géant, objet flou, filigrane) porte la classe `bleed` : le rapport l'ignore. Pour une slide qui dessine en JavaScript (three.js, graphiques générés), allonger l'attente : `--attente 3000`.
+
+Ce que le rapport ne voit pas, et qu'il faut chercher sur la planche : un titre de deux lignes qui chevauche le sous-titre placé trop haut, un mot seul sur la dernière ligne, deux encres ou deux couleurs qui se mélangent en une teinte boueuse, un élément qui touche une photo sans le vouloir.
+
+**Avant de publier** une nouvelle version : comparer les fichiers en ligne avec la copie locale. Si l'utilisateur a modifié quelque chose de son côté, repartir de sa version et y reporter les corrections. Publier seulement les fichiers changés.
+
+## Slides de chiffres (tous les styles)
+
+C'est là que le look généré revient le plus vite. Retour utilisateur réel : « trois chiffres alignés avec des filets, ça fait Claude, c'est vide ».
+
+- Jamais trois ou quatre chiffres de même taille en colonnes séparées par des filets.
+- Un chiffre héros qui domine (trois à cinq fois plus grand que les autres), les autres subordonnés.
+- Le chiffre vit dans un objet ou une figure du style : ticket, infographie hachurée, carte à cercles, line-up de festival, sommaire de magazine, colonne de répartition sur la grille.
+- Remplir le format : une slide de chiffres n'a pas de grand vide non composé.
+- Varier la composition d'une slide de chiffres à l'autre (graphique plein cadre, figure + colonne, héros + petits multiples, titre dans le graphique).
+- Varier aussi la forme : jamais deux slides voisines avec le même type de graphique (trois courbes d'affilée se ressemblent, même avec des mises en page différentes). Alterner courbe, waffle, colonnes groupées, dumbbell, carte, chiffre géant.
+- Varier l'objet d'une slide de chiffres à l'autre dans un même style : en magazine, un « chiffre + photo » puis un questionnaire ou un sommaire ; en objet réel, un ticket puis une fiche, une étiquette prix ou une carte de lecteur posées à côté.
+
+## Typographie française (tous les styles)
+
+- Espace insécable avant `%`, `€`, `:`, `;`, `?`, `!`, `»` et après `«`, et dans les milliers (`412 000` avec une espace fine insécable). Sans elle, un `%` ou un `€` se retrouve seul en début de ligne.
+- `text-wrap: balance` sur tous les titres : il évite le mot seul sur la dernière ligne.
+- Guillemets français « », apostrophe typographique ’ dans les titres en grand corps.
+- Chiffres en `tabular-nums` dès qu'ils sont alignés ou comparés.
+
+## Interdits communs (anti-look généré)
+
+Valables pour tous les styles. Chaque fichier de style ajoute les siens.
+
+- Rangées de cartes symétriques, icônes dans des ronds, pictogrammes génériques à la place d'une donnée.
+- Dégradés violet et bleu, glassmorphism, ombres portées partout, coins arrondis par défaut.
+- Emojis.
+- Tout centré, tout de la même taille, puces à rallonge, paragraphes.
+- Titres génériques : "Contexte", "Notre solution", "Introduction", "Conclusion".
+- Plus de trois niveaux de texte sur une slide.
+- La même image ou le même objet sur plusieurs slides.
+- Des couleurs sans rôle : chaque couleur a une fonction écrite dans la slide règles.
+- Des chiffres sans source.
+- Du blanc pur #FFFFFF et du noir pur #000000 en grands aplats, sauf si le style l'exige (brutalisme web).
+
+## Export HTML autonome
+
+Pour partager hors de Claude, envoyer par mail ou intégrer dans un outil comme Notion :
+
+```bash
+python scripts/export.py mon-deck/deck.html --out mon-deck/deck-autonome.html
+```
+
+Le script assemble tout dans un seul fichier : feuilles de style incluses, images converties en WebP (1920 px max, qualité 80) et intégrées en base64, polices intégrées en base64, scripts externes intégrés. Il ajoute une navigation au clavier (flèches, espace, Page suivante, clic), `N` pour afficher les notes, `F` pour le plein écran, une mise à l'échelle à la taille de la fenêtre, et écrit les numéros de page en dur. Compter environ 0,5 Mo par slide. Le fichier s'ouvre hors ligne le jour de l'oral.
+
+## Check commun avant de livrer
+
+- [ ] Le deck se comprend en ne lisant que les titres.
+- [ ] Chaque slide de contenu utilise un layout du style, jamais une grille générique.
+- [ ] Les règles de couleur et de tampon du style sont respectées sur chaque slide.
+- [ ] Marqueur de page et repère de section sur chaque slide.
+- [ ] Aucune image répétée, détourages propres, crédits dans les notes.
+- [ ] Aucun titre sur 3 lignes, aucun débordement : `rapport.txt` vide et planche vérifiée.
+- [ ] Chaque chiffre a sa source dans les notes ou en pied de slide.
+- [ ] Espaces insécables en place (aucun `%`, `€` ou `?` seul en début de ligne).
+- [ ] Script de l'orateur dans les notes de chaque slide.
+- [ ] Les slides validées par l'utilisateur n'ont pas été retouchées.
+- [ ] Le check propre au style (fin du fichier du style) est passé.
