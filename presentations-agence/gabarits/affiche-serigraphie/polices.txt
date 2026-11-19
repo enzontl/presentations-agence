@@ -1,0 +1,4 @@
+Big Shoulders Display:wght@700;800;900
+Alfa Slab One
+Work Sans:wght@400;600
+DM Mono:wght@400;500

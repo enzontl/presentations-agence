@@ -1,0 +1,26 @@
+/* data-journalisme : jetons et classes du style. Copier en style.css dans le dossier du deck. */
+:root{
+  --paper:#F7F5F0; --ink:#1A1A1A; --data:#B9B4AB; --grey:#6B6760; --grid:#E3DFD7; --em:#E4572E;
+  --f-head:"Newsreader",serif; --f-text:"Public Sans",sans-serif; --f-mono:"IBM Plex Mono",monospace;
+}
+.slide{background:var(--paper);color:var(--ink);font-family:var(--f-text);font-variant-numeric:tabular-nums}
+.kicker{font:700 20px/1 var(--f-text);letter-spacing:.14em;text-transform:uppercase;color:var(--em)}
+.h1{font:600 92px/1.02 var(--f-head);letter-spacing:-.018em;text-wrap:balance}
+.h2{font:600 64px/1.06 var(--f-head);letter-spacing:-.012em;text-wrap:balance}
+.chapo{font:400 30px/1.35 var(--f-head);color:#3A3833}
+.foot{left:96px;right:96px;bottom:40px;display:flex;justify-content:space-between;font:400 18px/1.4 var(--f-mono);color:var(--grey);border-top:1px solid var(--grid);padding-top:12px}
+.lecture{font:400 20px/1.45 var(--f-mono);color:var(--grey)}
+svg text{font-family:"Public Sans",sans-serif;font-size:21px;fill:#6B6760}
+svg .em{fill:#E4572E;font-weight:700}
+svg .ink{fill:#1A1A1A;font-weight:700}
+.night{background:#17232C;color:#F1EDE6}
+.night .chapo{color:#C9C3B8}
+.night .foot{color:#8E97A0;border-color:#2C3A45}
+.night .lecture{color:#8E97A0}
+.tint{background:#F4E2D7}
+.night svg text{fill:#8E97A0}
+.night svg .ink{fill:#F1EDE6}
+.night svg .em{fill:#FF6B43}
+.night svg line{stroke:#33424D}
+.night .big,.night .kicker{color:#FF6B43}
+.big{font:600 300px/.82 var(--f-head);letter-spacing:-.03em;color:var(--em)}

@@ -93,18 +93,35 @@ Lire le fichier du style en entier. Puis écrire et faire valider, en un bloc co
 
 Chercher, télécharger, traiter, placer. Voir la section "Pipeline images".
 
-### 5. Le template, avec une slide "règles"
+### 5. Tirer les layouts, puis monter le template
 
-Premier livrable visuel : un petit deck de 6 à 10 slides.
+**Ne pas choisir les layouts à la main.** Un modèle qui choisit revient toujours au même layout par défaut, et deux slides voisines finissent par se ressembler (c'est le premier retour des tests utilisateurs). Le hasard choisit, dans ce qui convient :
 
-- **Slide 0 "règles"** : pastilles de la palette avec hex et rôle, polices avec leur rôle, les 5 interdits, l'élément signature. Elle sert de contrat visuel pour toute la suite.
-- **Un layout par type de contenu**, rempli avec le vrai contenu et les vraies images. Jamais de lorem ipsum ni de rectangle gris : un placeholder empêche de juger le rendu, et c'est exactement par là que le look template revient.
+```bash
+python scripts/tirage.py --style une-de-journal --plan cover,sommaire,contexte,chiffre-cle,evolution,persona,closing --out mon-deck/tirage.json
+python scripts/tirage.py --style une-de-journal --plan ... --out mon-deck/tirage.json --redraw 4   # re-tirer une slide
+```
+
+Le plan liste un type de contenu par slide (`--types` pour la liste). Le script tire un layout par slide parmi les gabarits validés et les layouts de la fiche, sans deux formes identiques côte à côte, sans répéter un layout, en évitant ceux des projets récents. Garder le tirage sauf raison écrite (contenu qui ne rentre pas) ; dans ce cas, `--redraw` plutôt qu'un choix à la main.
+
+Puis monter le dossier du deck :
+
+```bash
+python scripts/nouveau_deck.py mon-deck --tirage mon-deck/tirage.json
+```
+
+Il copie les CSS, télécharge les polices, génère les textures et assemble `deck.html`. Les slides tirées depuis `gabarits/` arrivent déjà construites avec du texte d'exemple (Kōri, Valmont) : **tout le texte et tous les chiffres sont à remplacer**, la composition est à garder. Les layouts « à construire d'après la fiche » arrivent en section `.a-construire` : les construire en reprenant les classes du `style.css`.
+
+Premier livrable visuel : ce template de 6 à 10 slides.
+
+- **Slide 0 « règles »** : pastilles de la palette avec hex et rôle, polices avec leur rôle, les 5 interdits, l'élément signature. Elle sert de contrat visuel pour toute la suite.
+- **Les slides tirées**, remplies avec le vrai contenu et les vraies images. Jamais de lorem ipsum ni de rectangle gris : un placeholder empêche de juger le rendu, et c'est exactement par là que le look template revient.
 
 Faire valider le template avant de produire tout le deck.
 
-### 6. La boucle de rendu
+### 6. La boucle de rendu et la critique
 
-À chaque version : rendre, regarder, corriger. Voir la section "Boucle de rendu".
+À chaque version : rendre, critiquer sur les captures avec `references/critique.md`, corriger les trois pires défauts, recommencer, trois rounds au plus. Voir la section « Boucle de rendu ».
 
 ### 7. Les retours utilisateur
 
@@ -137,7 +154,8 @@ mon-deck/
 ├── fond.md        brief, storyline, sources, slides validées, table images
 ├── deck.html      toutes les slides
 ├── base.css       copie de assets/base.css (structure, animations)
-├── style.css      le style choisi (jetons, classes du style)
+├── style.css      le style choisi (copie de gabarits/<style>/style.css)
+├── tirage.json    les layouts tirés au sort (scripts/tirage.py)
 ├── fonts/         polices locales + fonts.css (scripts/polices.py)
 ├── raw/           photos téléchargées, non traitées
 ├── assets/        photos traitées, textures
@@ -163,6 +181,7 @@ mon-deck/
 
 - `assets/base.css` fournit la structure, le compteur de pages (`.pageno`), l'image plein cadre (`.bg`) et les animations `rise`, `drop`, `slam`, `fade` déclenchées par `data-anim` et décalées de 120 ms par `--i`. Les animations ne jouent qu'en mode présentation : en rendu statique, chaque élément est dans son état final.
 - Chaque style a ses propres classes dans `style.css`. Le fichier du style les liste avec ses jetons CSS.
+- `gabarits/<style>/` contient les slides validées par un utilisateur exigeant, prêtes à copier : `style.css`, un fichier HTML par layout (en-tête : type, forme, fond, image attendue), `polices.txt`, et `commun.html` quand le style a des scripts (graphiques, 3D) ou un sprite SVG. `gabarits/index.json` les recense. Partir d'un gabarit plutôt que d'une page blanche : c'est ce qui garde le niveau d'un deck à l'autre.
 - Les polices : `python scripts/polices.py "Anton" "Inter:wght@400;600" --out fonts/` télécharge les fichiers Google Fonts et écrit `fonts/fonts.css`. Des polices locales garantissent un rendu identique hors ligne et dans l'export.
 - **Si l'environnement propose un type d'artifact Slides ou un outil de présentation**, y transposer la même structure : une section par slide, mêmes classes, images uploadées dans l'espace d'assets de l'artifact et référencées par l'URL renvoyée. Garder une table "fichier vers URL" dans `fond.md`, utile pour les exports.
 
@@ -236,13 +255,14 @@ python scripts/rendu.py mon-deck/deck.html --out mon-deck/renders
 
 Le script rend chaque slide en PNG 1920x1080 (Chrome sans interface, animations coupées, polices locales), assemble `planche.png` et écrit `rapport.txt` avec les problèmes détectés : titre sur 3 lignes ou plus, élément qui sort de la slide, texte coupé dans sa boîte, image manquante, police non chargée, texte trop petit. Option `--slides 3,5` pour ne rendre que certaines slides.
 
+Le script écrit aussi `titres.txt` (les titres seuls, pour tester le récit), `planche-floue.png` (les masses, comme en plissant les yeux) et, dans le rapport, la rubrique « Rythme » : les slides voisines qui se ressemblent trop. Une section `.a-construire` restante est signalée en tête.
+
 Puis :
 
-1. Lire `rapport.txt`.
-2. Regarder `planche.png` : rythme, alternance des fonds, répétitions, cohérence.
-3. Ouvrir en taille réelle chaque slide modifiée ou signalée, et la regarder vraiment.
-4. Corriger : titre sur 3 lignes ou plus, texte sous un tampon, élément qui déborde, chiffre trop large, contraste faible, deux slides consécutives trop semblables.
-5. Recommencer jusqu'à un rapport vide et une planche sans défaut visible.
+1. Lire `rapport.txt` et corriger tout ce qui est cassé.
+2. Critiquer sur les captures avec `references/critique.md` : sept passes (titres seuls, plisser les yeux, une seconde, cacher le nom, les voisines, les chiffres, le style), une note sur 10 avec plafonds, la critique écrite.
+3. Corriger les trois problèmes les plus graves, relancer le rendu, recommencer.
+4. Trois rounds au plus. S'arrêter avant si la note atteint 8 sans plafond.
 
 Un élément volontairement coupé par le bord (titre géant, objet flou, filigrane) porte la classe `bleed` : le rapport l'ignore. Pour une slide qui dessine en JavaScript (three.js, graphiques générés), allonger l'attente : `--attente 3000`.
 
@@ -302,6 +322,8 @@ Le script assemble tout dans un seul fichier : feuilles de style incluses, image
 - [ ] Marqueur de page et repère de section sur chaque slide.
 - [ ] Aucune image répétée, détourages propres, crédits dans les notes.
 - [ ] Aucun titre sur 3 lignes, aucun débordement : `rapport.txt` vide et planche vérifiée.
+- [ ] Critique écrite, note de 8 ou plus sans plafond (`references/critique.md`).
+- [ ] Aucun texte d'exemple de gabarit oublié (chercher « Kōri », « Valmont », « données fictives »).
 - [ ] Chaque chiffre a sa source dans les notes ou en pied de slide.
 - [ ] Espaces insécables en place (aucun `%`, `€` ou `?` seul en début de ligne).
 - [ ] Script de l'orateur dans les notes de chaque slide.

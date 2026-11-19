@@ -1,0 +1,3 @@
+Inter Tight:wght@400;500;600
+Inter:wght@400;500
+IBM Plex Mono:wght@400;500

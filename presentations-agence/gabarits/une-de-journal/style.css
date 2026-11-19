@@ -1,0 +1,46 @@
+/* une-de-journal : jetons et classes du style. Copier en style.css dans le dossier du deck. */
+:root{
+  --paper:#EDE6D6; --paper2:#F6F2E8; --ink:#161513; --grey:#6E6960; --red:#C8102E; --blue:#1F4E79;
+  --f-mast:"UnifrakturMaguntia",serif; --f-head:"Libre Franklin",sans-serif; --f-text:"Source Serif 4",serif;
+}
+.slide{color:var(--ink);font-family:var(--f-text);font-variant-numeric:lining-nums}
+.mast{left:80px;right:80px;top:28px;text-align:center;font:400 118px/1 var(--f-mast)}
+.dateline{left:80px;right:80px;top:166px;height:44px;border-top:5px solid var(--ink);border-bottom:1.5px solid var(--ink);display:flex;justify-content:space-between;align-items:center;font:600 19px/1 var(--f-head);letter-spacing:.12em;text-transform:uppercase}
+.folio{left:80px;right:80px;top:40px;height:46px;border-bottom:3px double var(--ink);display:flex;justify-content:space-between;align-items:center;font:600 19px/1 var(--f-head);letter-spacing:.14em;text-transform:uppercase}
+.folio .m{font:400 40px/1 var(--f-mast);letter-spacing:0;text-transform:none}
+.kicker{font:700 22px/1 var(--f-head);letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+.headline{font:900 116px/.93 var(--f-head);letter-spacing:-.025em;text-wrap:balance}
+.headline.s{font-size:84px}
+.chapo{font:italic 400 32px/1.32 var(--f-text)}
+.cols{font:400 24px/1.42 var(--f-text);column-count:2;column-gap:40px;column-rule:1px solid rgba(22,21,19,.35);text-align:justify;hyphens:auto}
+.cols p+p{margin-top:.6em}
+.cols .drop::first-letter{float:left;font:700 98px/.8 var(--f-text);margin:6px 10px 0 0}
+.caption{font:400 18px/1.35 var(--f-head);color:var(--grey)}
+.caption b{float:right;font-weight:600;letter-spacing:.1em;font-size:17px}
+.flag{left:80px;top:240px;display:flex;align-items:center;gap:24px}
+.band{background:var(--red);color:var(--paper2);font:900 30px/1 var(--f-head);letter-spacing:.18em;text-transform:uppercase;padding:12px 22px}
+.box{background:var(--paper2);border-top:6px solid var(--ink);padding:22px 28px}
+.box h5{font:800 22px/1 var(--f-head);letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px}
+.box p{font:400 23px/1.38 var(--f-text);padding:12px 0;border-top:1px solid rgba(22,21,19,.3)}
+.box p b{font-family:var(--f-head);font-weight:800}
+.fig{font:900 168px/.9 var(--f-head);letter-spacing:-.04em}
+.figtxt{font:400 25px/1.35 var(--f-text);margin-top:14px}
+.vr{width:1px;background:rgba(22,21,19,.5)}
+.renvoi{font:italic 400 22px/1 var(--f-text)}
+.renvoi b{font:700 20px/1 var(--f-head);font-style:normal;letter-spacing:.06em}
+table.cours{border-collapse:collapse;font:400 25px/1 var(--f-head);width:100%}
+table.cours th{font:700 17px/1 var(--f-head);letter-spacing:.14em;text-transform:uppercase;text-align:right;padding:10px 0;border-bottom:3px solid var(--ink)}
+table.cours th:first-child,table.cours td:first-child{text-align:left}
+table.cours td{text-align:right;padding:20px 0;border-bottom:1px solid rgba(22,21,19,.35)}
+table.cours td.up::before{content:"▲ ";font-size:16px}
+table.cours td.dn::before{content:"▼ ";font-size:16px}
+img.photo{object-fit:cover}
+.hatch1{background:repeating-linear-gradient(45deg,var(--ink) 0 2px,transparent 2px 9px)}
+.hatch2{background:repeating-linear-gradient(-45deg,var(--ink) 0 2px,transparent 2px 7px)}
+.hatch3{background:repeating-linear-gradient(90deg,var(--ink) 0 1.5px,transparent 1.5px 8px)}
+.hatch4{background:radial-gradient(var(--ink) 1.6px,transparent 2px) 0 0/9px 9px}
+.leader{position:absolute;height:1px;background:var(--ink)}
+.cap2{position:absolute;font:400 23px/1.3 var(--f-text);width:330px}
+.cap2 b{display:block;font:900 54px/1 var(--f-head);letter-spacing:-.03em;margin-bottom:6px}
+.article{font:400 23px/1.42 var(--f-text);text-align:justify;hyphens:auto}
+.article::first-letter{float:left;font:700 92px/.8 var(--f-text);margin:6px 10px 0 0}

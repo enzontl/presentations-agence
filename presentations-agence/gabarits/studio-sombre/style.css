@@ -1,0 +1,27 @@
+/* studio-sombre : jetons et classes du style. Copier en style.css dans le dossier du deck. */
+:root{
+  --ink:#efe9df; --ink2:#c9c2b6; --mut:#948d82; --line:rgba(239,233,223,.12); --grid:rgba(239,233,223,.08); --gray:#6f685f;
+  --ease:cubic-bezier(.16,1,.3,1); --f:"Archivo",sans-serif;
+}
+.kori{--hl:#E8774F;--bar:#9CC9DB}
+.valmont{--hl:#D9B45A;--bar:#D0453A}
+.slide{background:radial-gradient(ellipse 85% 95% at 72% 0%,rgba(44,92,190,.55),transparent 72%),linear-gradient(#0c1631,#06080e);color:var(--ink);font-family:var(--f);font-variant-numeric:tabular-nums}
+.slide::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:5;
+  background:radial-gradient(ellipse 120% 100% at 50% 45%,transparent 55%,rgba(0,0,0,.55)),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.09'/%3E%3C/svg%3E")}
+canvas.scene{inset:0;width:1920px;height:1080px;z-index:0}
+h1{font-weight:820;font-stretch:112%;font-size:100px;line-height:.98;letter-spacing:-.022em;text-wrap:balance}
+h2{font-weight:780;font-stretch:108%;font-size:62px;line-height:1.03;letter-spacing:-.018em;text-wrap:balance}
+.hl{color:var(--hl)}
+.lede{font-size:31px;line-height:1.35;color:var(--ink2);max-width:32ch}
+.keys{display:flex;gap:64px}
+.keys b{display:block;font-weight:800;font-size:64px;letter-spacing:-.03em;line-height:1}
+.keys span{display:block;font-size:20px;color:var(--mut);margin-top:10px;max-width:220px;line-height:1.3}
+.hero{font-weight:800;font-size:120px;letter-spacing:-.035em;line-height:1;color:var(--hl)}
+.col p{font-size:24px;line-height:1.45;color:var(--ink2);margin:18px 0 28px}
+.kv{display:flex;justify-content:space-between;font-size:22px;padding:16px 0;border-top:1px solid var(--line);color:var(--ink2)}
+.kv b{color:var(--ink);font-weight:700}
+.foot{left:120px;right:120px;bottom:48px;display:flex;justify-content:space-between;font-size:19px;color:var(--mut);z-index:6}
+.progress{left:0;bottom:0;height:3px;background:var(--bar);z-index:6}
+.bgb{z-index:0;pointer-events:none;filter:blur(10px);opacity:.6}
+svg text{font-family:var(--f);fill:var(--ink2);font-size:22px}

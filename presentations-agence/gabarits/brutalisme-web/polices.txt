@@ -1,0 +1,3 @@
+Arimo:wght@400;700
+Tinos:ital,wght@0,400;1,400
+JetBrains Mono:wght@400;700

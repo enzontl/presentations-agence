@@ -1,0 +1,19 @@
+/* rapport-suisse : jetons et classes du style. Copier en style.css dans le dossier du deck. */
+:root{
+  --paper:#F4F2EE; --ink:#141414; --grey:#8A877F; --light:#D9D5CD; --rule:#CFCBC3; --accent:#E2231A;
+  --f-display:"Inter Tight",sans-serif; --f-text:"Inter",sans-serif; --f-mono:"IBM Plex Mono",monospace;
+}
+.slide{background:var(--paper);color:var(--ink);font-family:var(--f-text);font-variant-numeric:tabular-nums}
+.folio{left:96px;right:96px;top:52px;display:flex;justify-content:space-between;font:400 18px/1 var(--f-mono);color:var(--grey)}
+.ticks{left:96px;top:92px;width:1728px;height:20px;background:repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 146px)}
+.secno{font:400 18px/1 var(--f-mono);color:var(--grey)}
+.h2{font:500 64px/1.05 var(--f-display);letter-spacing:-.03em;text-wrap:balance}
+.legend{font:400 26px/1.35 var(--f-text)}
+.mono{font:400 19px/1.4 var(--f-mono);color:var(--grey)}
+.meta{border-top:1px solid var(--ink);padding-top:14px;font:400 20px/1.45 var(--f-mono)}
+.meta b{display:block;font-weight:500;color:var(--grey);font-size:16px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.seg{position:absolute;left:0;width:268px}
+.lab{position:absolute;left:292px;display:flex;gap:18px;align-items:baseline;font:400 22px/1 var(--f-text);white-space:nowrap}
+.lab span{font:400 19px/1 var(--f-mono);color:var(--grey)}
+.row{position:absolute;left:0;width:706px;height:74px;border-top:1px solid var(--rule);display:flex;align-items:center;font:400 22px/1 var(--f-mono)}
+.row i{display:block;height:14px;background:var(--light);margin:0 18px 0 22px}

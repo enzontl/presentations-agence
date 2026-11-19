@@ -1,0 +1,302 @@
+[
+ {
+  "style": "editorial-objet-reel",
+  "id": "cover-typo-objet",
+  "type": "cover",
+  "forme": "photo",
+  "fond": "sombre",
+  "image": "1060x1080 · chaud · --sombre bas",
+  "description": "Typo géante qui touche la photo de l'objet, tagline en italique, tampon",
+  "fichier": "gabarits/editorial-objet-reel/cover-typo-objet.html"
+ },
+ {
+  "style": "editorial-objet-reel",
+  "id": "chiffres-ticket",
+  "type": "repartition",
+  "forme": "objet",
+  "fond": "papier",
+  "image": "aucune",
+  "description": "Ticket de caisse poste par poste, total en gros, étiquette prix posée à côté",
+  "fichier": "gabarits/editorial-objet-reel/chiffres-ticket.html"
+ },
+ {
+  "style": "editorial-objet-reel",
+  "id": "cover-photo-plein-cadre",
+  "type": "cover",
+  "forme": "photo",
+  "fond": "sombre",
+  "image": "1920x1080 · chaud · --sombre bas --force .85",
+  "description": "Photo plein cadre, punchline géante, tampon chiffre",
+  "fichier": "gabarits/editorial-objet-reel/cover-photo-plein-cadre.html"
+ },
+ {
+  "style": "editorial-objet-reel",
+  "id": "chiffres-fiche",
+  "type": "evolution",
+  "forme": "objet",
+  "fond": "papier",
+  "image": "aucune",
+  "description": "Fiche de l'univers avec chiffres tamponnés par année, carte posée à côté",
+  "fichier": "gabarits/editorial-objet-reel/chiffres-fiche.html"
+ },
+ {
+  "style": "studio-sombre",
+  "id": "slide-objet",
+  "type": "cover",
+  "forme": "objet3d",
+  "fond": "sombre",
+  "image": "aucune (objet three.js)",
+  "description": "Objet 3D en studio à droite, titre-conclusion et 3 chiffres à gauche",
+  "fichier": "gabarits/studio-sombre/slide-objet.html"
+ },
+ {
+  "style": "studio-sombre",
+  "id": "donnees-barres",
+  "type": "comparaison",
+  "forme": "barres",
+  "fond": "sombre",
+  "image": "aucune",
+  "description": "Barres horizontales triées à gauche, chiffre héros et clés à droite, objets flous",
+  "fichier": "gabarits/studio-sombre/donnees-barres.html"
+ },
+ {
+  "style": "studio-sombre",
+  "id": "donnees-colonnes",
+  "type": "evolution",
+  "forme": "colonnes",
+  "fond": "sombre",
+  "image": "aucune",
+  "description": "Colonnes sur 5 périodes + courbe secondaire, chiffre héros à droite",
+  "fichier": "gabarits/studio-sombre/donnees-colonnes.html"
+ },
+ {
+  "style": "rapport-suisse",
+  "id": "cover-champ-accent",
+  "type": "cover",
+  "forme": "typo",
+  "fond": "clair",
+  "image": "aucune",
+  "description": "Champ d'accent pleine hauteur avec l'année géante, titre et méta sur la grille",
+  "fichier": "gabarits/rapport-suisse/cover-champ-accent.html"
+ },
+ {
+  "style": "rapport-suisse",
+  "id": "chiffre-repartition",
+  "type": "repartition",
+  "forme": "repartition",
+  "fond": "clair",
+  "image": "aucune",
+  "description": "Chiffre héros + colonne empilée étiquetée sur la grille",
+  "fichier": "gabarits/rapport-suisse/chiffre-repartition.html"
+ },
+ {
+  "style": "rapport-suisse",
+  "id": "cover-chiffres-geants",
+  "type": "cover",
+  "forme": "typo",
+  "fond": "clair",
+  "image": "aucune",
+  "description": "Année géante en accent coupée par le bord, titre sur 2 lignes",
+  "fichier": "gabarits/rapport-suisse/cover-chiffres-geants.html"
+ },
+ {
+  "style": "rapport-suisse",
+  "id": "chiffre-table",
+  "type": "evolution",
+  "forme": "table",
+  "fond": "clair",
+  "image": "aucune",
+  "description": "Chiffre héros + variation en accent + table-graphique",
+  "fichier": "gabarits/rapport-suisse/chiffre-table.html"
+ },
+ {
+  "style": "une-de-journal",
+  "id": "la-une",
+  "type": "cover",
+  "forme": "photo",
+  "fond": "papier",
+  "image": "1100x700 · presse",
+  "description": "Manchette, bandeau, gros titre, photo de presse, chapô, encadré L'essentiel",
+  "fichier": "gabarits/une-de-journal/la-une.html"
+ },
+ {
+  "style": "une-de-journal",
+  "id": "decryptage",
+  "type": "repartition",
+  "forme": "infographie",
+  "fond": "papier",
+  "image": "aucune",
+  "description": "Infographie hachurée avec légendes reliées par des filets, encadré Repère",
+  "fichier": "gabarits/une-de-journal/decryptage.html"
+ },
+ {
+  "style": "une-de-journal",
+  "id": "carte",
+  "type": "territoire",
+  "forme": "carte",
+  "fond": "papier",
+  "image": "aucune",
+  "description": "Carte schématique à cercles proportionnels, article à lettrine",
+  "fichier": "gabarits/une-de-journal/carte.html"
+ },
+ {
+  "style": "affiche-serigraphie",
+  "id": "affiche-titre-droite",
+  "type": "cover",
+  "forme": "photo",
+  "fond": "papier",
+  "image": "900x1080 · trame --encres",
+  "description": "Nom géant en encre 1 + liseré, image tramée à droite, bande d'infos",
+  "fichier": "gabarits/affiche-serigraphie/affiche-titre-droite.html"
+ },
+ {
+  "style": "affiche-serigraphie",
+  "id": "affiche-chiffre",
+  "type": "chiffre-cle",
+  "forme": "typo",
+  "fond": "papier",
+  "image": "aucune",
+  "description": "Chiffre géant sur disque tramé, bandeau billet avec les autres chiffres",
+  "fichier": "gabarits/affiche-serigraphie/affiche-chiffre.html"
+ },
+ {
+  "style": "affiche-serigraphie",
+  "id": "affiche-titre-gauche",
+  "type": "cover",
+  "forme": "photo",
+  "fond": "papier",
+  "image": "900x1080 · trame --encres",
+  "description": "Image tramée à gauche, slogan géant, nom en caractère bois",
+  "fichier": "gabarits/affiche-serigraphie/affiche-titre-gauche.html"
+ },
+ {
+  "style": "affiche-serigraphie",
+  "id": "line-up",
+  "type": "plusieurs-chiffres",
+  "forme": "typo",
+  "fond": "papier",
+  "image": "aucune",
+  "description": "Line-up centré de festival : chiffres en tailles décroissantes",
+  "fichier": "gabarits/affiche-serigraphie/line-up.html"
+ },
+ {
+  "style": "magazine-de-mode",
+  "id": "couverture-split",
+  "type": "cover",
+  "forme": "photo",
+  "fond": "clair",
+  "image": "1100x1080 · mode",
+  "description": "Titre du magazine dans le blanc, accroches, photo à droite",
+  "fichier": "gabarits/magazine-de-mode/couverture-split.html"
+ },
+ {
+  "style": "magazine-de-mode",
+  "id": "chiffre-photo",
+  "type": "chiffre-cle",
+  "forme": "photo",
+  "fond": "clair",
+  "image": "860x1080 · mode",
+  "description": "Chiffre didone géant, fiche Look, photo à droite",
+  "fichier": "gabarits/magazine-de-mode/chiffre-photo.html"
+ },
+ {
+  "style": "magazine-de-mode",
+  "id": "couverture-plein-cadre",
+  "type": "cover",
+  "forme": "photo",
+  "fond": "photo",
+  "image": "1920x1080 · mode",
+  "description": "Photo plein cadre, titre dans le vide de l'image",
+  "fichier": "gabarits/magazine-de-mode/couverture-plein-cadre.html"
+ },
+ {
+  "style": "magazine-de-mode",
+  "id": "double-page-chiffre",
+  "type": "plusieurs-chiffres",
+  "forme": "photo",
+  "fond": "photo",
+  "image": "1920x1080 · mode",
+  "description": "Double page photo, chiffre héros dans le vide, colonne étroite",
+  "fichier": "gabarits/magazine-de-mode/double-page-chiffre.html"
+ },
+ {
+  "style": "data-journalisme",
+  "id": "cover-courbe-plein-cadre",
+  "type": "cover",
+  "forme": "courbe",
+  "fond": "nuit",
+  "image": "aucune",
+  "description": "Courbe plein cadre, titre posé dans le vide de la courbe",
+  "fichier": "gabarits/data-journalisme/cover-courbe-plein-cadre.html"
+ },
+ {
+  "style": "data-journalisme",
+  "id": "waffle",
+  "type": "repartition",
+  "forme": "waffle",
+  "fond": "teinte",
+  "image": "aucune",
+  "description": "Grand waffle 10x10 à gauche, chiffre et lecture sur panneau teinté",
+  "fichier": "gabarits/data-journalisme/waffle.html"
+ },
+ {
+  "style": "data-journalisme",
+  "id": "chiffre-cle-colonnes",
+  "type": "chiffre-cle",
+  "forme": "colonnes",
+  "fond": "nuit",
+  "image": "aucune",
+  "description": "Chiffre géant + colonnes groupées avant/après",
+  "fichier": "gabarits/data-journalisme/chiffre-cle-colonnes.html"
+ },
+ {
+  "style": "data-journalisme",
+  "id": "dumbbell",
+  "type": "comparaison",
+  "forme": "dumbbell",
+  "fond": "clair",
+  "image": "aucune",
+  "description": "Dumbbell par catégorie, bandes teintées sur les lignes clés",
+  "fichier": "gabarits/data-journalisme/dumbbell.html"
+ },
+ {
+  "style": "brutalisme-web",
+  "id": "index-html",
+  "type": "cover",
+  "forme": "photo",
+  "fond": "blanc",
+  "image": "640x760 · pixel",
+  "description": "Page d'accueil : titre géant + curseur, liens bleus, image tramée encadrée",
+  "fichier": "gabarits/brutalisme-web/index-html.html"
+ },
+ {
+  "style": "brutalisme-web",
+  "id": "barres-ascii",
+  "type": "repartition",
+  "forme": "table",
+  "fond": "blanc",
+  "image": "aucune",
+  "description": "Barres ASCII dans une boîte à ombre dure, ligne clé surlignée",
+  "fichier": "gabarits/brutalisme-web/barres-ascii.html"
+ },
+ {
+  "style": "brutalisme-web",
+  "id": "index-of",
+  "type": "sommaire",
+  "forme": "table",
+  "fond": "blanc",
+  "image": "860x620 · pixel --encres 0000EE",
+  "description": "Listing Index of / : les parties du deck comme dossiers",
+  "fichier": "gabarits/brutalisme-web/index-of.html"
+ },
+ {
+  "style": "brutalisme-web",
+  "id": "diff",
+  "type": "avant-apres",
+  "forme": "table",
+  "fond": "blanc",
+  "image": "aucune",
+  "description": "Diff : lignes rouges supprimées, vertes ajoutées, message de commit",
+  "fichier": "gabarits/brutalisme-web/diff.html"
+ }
+]

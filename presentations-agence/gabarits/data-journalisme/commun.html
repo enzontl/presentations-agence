@@ -1,0 +1,64 @@
+<!-- Éléments communs à insérer une seule fois dans deck.html : sprite SVG en début de body, scripts en fin de body. Les données des graphiques sont des exemples. -->
+
+<script>
+const fr=n=>n.toLocaleString('fr-FR');
+// A1 : ventes hebdomadaires, plein cadre
+(function(){
+  const D=[420,610,780,1050,1240,1610,1980,2350],x0=200,x1=1800,y0=960,y1=120,max=2500;
+  const X=i=>x0+i*(x1-x0)/(D.length-1),Y=v=>y0-(v/max)*(y0-y1);
+  let s='';
+  [0,500,1000,1500,2000,2500].forEach(v=>{s+=`<line x1="${x0}" x2="${x1}" y1="${Y(v)}" y2="${Y(v)}" stroke="#E3DFD7"/><text x="${x1+14}" y="${Y(v)+7}">${fr(v)}</text>`});
+  D.forEach((v,i)=>s+=`<text x="${X(i)}" y="${y0+34}" text-anchor="middle">S${i+1}</text>`);
+  s+=`<path d="M${X(0)},${y0} ${D.map((v,i)=>'L'+X(i)+','+Y(v)).join(' ')} L${X(7)},${y0} Z" fill="#E4572E" opacity=".08"/>`;
+  s+=`<line x1="${X(4)}" x2="${X(4)}" y1="${Y(1240)}" y2="${y0}" stroke="#1A1A1A" stroke-dasharray="4 6"/>`;
+  s+=`<text x="${X(4)+16}" y="${Y(1240)+50}" class="ink">Arrivée en épiceries fines</text><text x="${X(4)+16}" y="${Y(1240)+78}">semaine 5, 18 nouveaux points de vente</text>`;
+  s+=`<polyline fill="none" stroke="#E4572E" stroke-width="7" stroke-linejoin="round" points="${D.map((v,i)=>X(i)+','+Y(v)).join(' ')}"/>`;
+  D.forEach((v,i)=>s+=`<circle cx="${X(i)}" cy="${Y(v)}" r="${i===7?13:6}" fill="#E4572E"><title>Semaine ${i+1} : ${fr(v)} canettes</title></circle>`);
+  s+=`<text x="${X(7)-26}" y="${Y(2350)-24}" text-anchor="end" class="em" style="font-size:30px">2 350 canettes</text><text x="${X(0)}" y="${Y(420)-24}" class="ink">420</text>`;
+  s+=`<text x="${x1+14}" y="${y1-30}" style="font-size:18px">canettes / semaine</text>`;
+  (document.getElementById('weekly')||{}).innerHTML=s;
+})();
+// A2 : grand waffle 10 x 10
+(function(){
+  const P=[["Distributeur",38,1],["Marque Kōri",19],["Café",18],["Canette",8],["Logistique",7],["TVA",5],["Infusion",5]];
+  const cells=[];P.forEach(([k,n,e],j)=>{for(let i=0;i<n;i++)cells.push([e,j])});
+  const c=80,g=10;let s='';
+  cells.forEach(([e,j],i)=>{const col=i%10,row=Math.floor(i/10);
+    s+=`<rect x="${col*(c+g)}" y="${row*(c+g)}" width="${c}" height="${c}" fill="${e?'#E4572E':(j%2?'#B9B4AB':'#CFCAC1')}"/>`;});
+  // étiquettes posées sur le premier carré de chaque groupe
+  let k=0;P.forEach(([name,n,e])=>{const col=k%10,row=Math.floor(k/10);
+    if(n>=7)s+=`<text x="${col*(c+g)+10}" y="${row*(c+g)+32}" style="font-size:19px;font-weight:700;fill:${e?'#fff':'#1A1A1A'}">${n} ${name.toLowerCase()}</text>`;k+=n;});
+  s+=`<text x="${9*(c+g)-4}" y="${9*(c+g)+50}" text-anchor="end" style="font-size:17px;fill:#1A1A1A">10 TVA + infusion</text>`;
+  (document.getElementById('waffle')||{}).innerHTML=s;
+})();
+// B1 : colonnes groupées 2021 / 2025
+(function(){
+  const G=[["Entrées",248,412,'#E4572E'],["Prêts",312,286,'#9C978D']];
+  const base=760,max=450,H=v=>v/max*640;let s='';
+  [0,100,200,300,400].forEach(v=>s+=`<line x1="0" x2="814" y1="${base-H(v)}" y2="${base-H(v)}" stroke="#E3DFD7"/><text x="814" y="${base-H(v)-8}" text-anchor="end" style="font-size:17px">${v} k</text>`);
+  G.forEach(([n,a,b,c],g)=>{const ox=40+g*400;
+    [[a,'2021',.35],[b,'2025',1]].forEach(([v,y,op],k)=>{const x=ox+k*160;
+      s+=`<rect x="${x}" y="${base-H(v)}" width="140" height="${H(v)}" fill="${c}" opacity="${op}"><title>${n} ${y} : ${v} 000</title></rect>`;
+      s+=`<text x="${x+70}" y="${base-H(v)-16}" text-anchor="middle" class="${k&&g===0?'em':'ink'}" style="font-size:26px">${v} k</text>`;
+      s+=`<text x="${x+70}" y="${base+34}" text-anchor="middle">${y}</text>`;});
+    s+=`<text x="${ox+150}" y="${base+80}" text-anchor="middle" class="ink" style="font-size:26px">${n}</text>`;
+    s+=`<text x="${ox+150}" y="${base+112}" text-anchor="middle" class="${g?'':'em'}" style="font-size:22px">${g?'−8 %':'+66 %'}</text>`;});
+  (document.getElementById('cols')||{}).innerHTML=s;
+})();
+// B2 : dumbbell 2021 -> 2025 par lieu
+(function(){
+  const S=[["Centre",110,172],["Gare",52,98],["Les Tilleuls",38,70],["Haut-Valmont",28,46],["Port",20,26,1]];
+  const x0=300,x1=1420,X=v=>x0+v/180*(x1-x0);let s='';
+  [0,45,90,135,180].forEach(v=>s+=`<line x1="${X(v)}" x2="${X(v)}" y1="10" y2="600" stroke="#E3DFD7"/><text x="${X(v)}" y="634" text-anchor="middle" style="font-size:18px">${v} k</text>`);
+  S.forEach(([n,a,b,down],i)=>{const y=100+i*110;
+    if(!down)s+=`<rect x="-96" y="${y-46}" width="1920" height="92" fill="#F4E2D7" opacity="${i%2?.55:1}"/>`;
+    s+=`<text x="${x0-30}" y="${y+9}" text-anchor="end" class="ink" style="font-size:28px">${n}</text>`;
+    s+=`<line x1="${X(a)}" x2="${X(b)}" y1="${y}" y2="${y}" stroke="${down?'#B9B4AB':'#E4572E'}" stroke-width="10" stroke-linecap="round" opacity="${down?1:.35}"/>`;
+    s+=`<circle cx="${X(a)}" cy="${y}" r="14" fill="#B9B4AB"><title>${n} 2021 : ${a} 000</title></circle>`;
+    s+=`<circle cx="${X(b)}" cy="${y}" r="18" fill="${down?'#6B6760':'#E4572E'}"><title>${n} 2025 : ${b} 000</title></circle>`;
+    s+=`<text x="${X(b)+30}" y="${y+9}" class="${down?'ink':'em'}" style="font-size:26px">${b} k${down?' · en recul':' · record'}</text>`;
+    s+=`<text x="${X(a)-26}" y="${y+8}" text-anchor="end" style="font-size:20px">${a}</text>`;});
+  s+=`<g style="font-size:19px"><circle cx="${x0}" cy="22" r="8" fill="#B9B4AB"/><text x="${x0+16}" y="28">2021</text><circle cx="${x0+110}" cy="22" r="10" fill="#E4572E"/><text x="${x0+128}" y="28">2025</text></g>`;
+  (document.getElementById('dumb')||{}).innerHTML=s;
+})();
+</script>

@@ -3,7 +3,7 @@
 
   python rendu.py deck.html --out renders/ [--slides 1,4] [--cols 4] [--attente 800] [--no-js]
 
-Sorties : renders/slide-01.png ..., renders/planche.png, renders/rapport.txt
+Sorties : renders/slide-01.png ..., planche.png, planche-floue.png (masses), titres.txt (test des titres), rapport.txt
 Prérequis : pip install playwright pillow ; Chrome installé, ou `playwright install chromium`.
 
 Le rendu se fait animations coupées (chaque élément dans son état final) et avec
@@ -71,11 +71,43 @@ CHECK_JS = r"""
       if (el.tagName === 'IMG' && !(el.complete && el.naturalWidth)) issues.push('image manquante : ' + el.getAttribute('src'));
     });
     missingFonts.forEach(f => issues.push(`police non déclarée, repli système : ${f}`));
+    if (s.classList.contains('a-construire')) issues.unshift('SECTION À CONSTRUIRE : layout pas encore fait (voir le commentaire dans la section)');
     errors.forEach(f => issues.push(`police en erreur : ${f}`));
     return issues;
   });
 }
 """
+
+
+TITRES_JS = r"""
+() => [...document.querySelectorAll('section.slide')].map(s => {
+  const t = [...s.querySelectorAll('h1,h2,.title,.titre,.headline,.h1,.h2,.giant')]
+    .filter(e => !e.closest('.notes')).map(e => e.textContent.replace(/\s+/g,' ').trim()).filter(Boolean);
+  return t.length ? t.join(' / ') : '(pas de titre)';
+})
+"""
+
+
+def floue(src, out):
+    """Planche « plissée » : on ne voit plus que les masses, comme en plissant les yeux."""
+    from PIL import ImageFilter
+    im = Image.open(src)
+    im.resize((im.width // 8, im.height // 8)).filter(ImageFilter.GaussianBlur(2)).resize(im.size, Image.BICUBIC).save(out)
+
+
+def voisines(rendus, seuil=14.0):
+    """Repère les slides voisines qui se ressemblent trop (même composition, mêmes masses)."""
+    import numpy as np
+    sig = []
+    for num, p in rendus:
+        a = np.asarray(Image.open(p).convert("L").resize((48, 27), Image.BILINEAR), dtype=float)
+        sig.append((num, (a - a.mean()) / (a.std() + 1e-6)))
+    out = []
+    for (n1, a), (n2, b) in zip(sig, sig[1:]):
+        d = float(np.abs(a - b).mean()) * 20
+        if d < seuil:
+            out.append(f"slides {n1:02d} et {n2:02d} se ressemblent (écart {d:.1f}, à vérifier) : même composition ? changer la forme ou le côté de l'une")
+    return out
 
 
 def planche(paths, out, cols=4, tw=480):
@@ -135,6 +167,7 @@ def main():
         slides = page.locator("section.slide")
         n = slides.count()
         issues = page.evaluate(CHECK_JS) if not a.no_js else [[] for _ in range(n)]
+        titres = page.evaluate(TITRES_JS) if not a.no_js else []
         rendus = []
         for i in range(n):
             num = i + 1
@@ -147,6 +180,9 @@ def main():
 
     if rendus:
         planche(rendus, out / "planche.png", a.cols)
+        floue(out / "planche.png", out / "planche-floue.png")
+    if titres:
+        (out / "titres.txt").write_text("\n".join(f"{i + 1:02d}  {t}" for i, t in enumerate(titres)) + "\n")
 
     lignes = []
     for i, iss in enumerate(issues):
@@ -154,6 +190,10 @@ def main():
             continue
         lignes.append(f"Slide {i + 1:02d}")
         lignes += [f"  - {x}" for x in dict.fromkeys(iss)]
+    proches = voisines(rendus) if len(rendus) > 1 else []
+    if proches:
+        lignes.append("Rythme")
+        lignes += [f"  - {x}" for x in proches]
     if console:
         lignes.append("Console")
         lignes += [f"  - {x}" for x in console[:20]]
