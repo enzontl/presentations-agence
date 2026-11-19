@@ -90,7 +90,7 @@ Largeurs utiles sur la grille : 3 colonnes = 414 px, 4 colonnes = 560 px, 6 colo
 | Chiffre clé | Chiffre de 360 px sur 7 colonnes, légende sur 3 colonnes | L'unité en mono, la variation en accent |
 | Trois chiffres | Trois colonnes de 4, chiffres alignés sur la même ligne de base | Pas de boîte, juste un filet au-dessus |
 | Évolution | Barres verticales fines sur 8 colonnes | Dernière barre en accent, valeurs au-dessus |
-| Répartition | Barre horizontale unique découpée, légendes dessous | Gris dégradés, un segment en accent |
+| Répartition | Chiffre héros + barre ou colonne découpée, légendes en petit | Gris dégradés, un segment en accent ; jamais les montants de chaque segment au même corps que le héros |
 | Tableau financier | Tableau à filets, colonnes N-1 et N, variation | Variation en accent seulement si elle compte |
 | Comparaison | Deux colonnes de 6, même structure, filet vertical au centre | Mêmes échelles des deux côtés |
 | Citation, engagement | Citation en display 64 px sur 9 colonnes, nom en mono | Guillemets en accent |

@@ -53,6 +53,9 @@ Trois problèmes au plus par round, les plus graves d'abord : un plafond passe a
 
 ## 4. Quand s'arrêter
 
+La critique s'écrit dans `fond.md`, dans le format ci-dessus : `lint.py --livraison` la cherche et bloque la livraison si elle manque.
+
+
 - Corriger les trois problèmes, relancer `rendu.py`, refaire les passes.
 - Trois rounds au maximum. Au-delà, montrer le deck à l'utilisateur avec la dernière critique.
 - S'arrêter avant si la note atteint 8 sans aucun plafond.

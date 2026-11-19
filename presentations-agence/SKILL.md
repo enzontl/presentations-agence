@@ -155,6 +155,9 @@ Les retours typiques, à anticiper dès la première version :
 
 ### 8. Le deck final
 
+**Porte de sortie, obligatoire** : `python scripts/lint.py mon-deck/deck.html --livraison` doit finir sans bloquant. Il vérifie en plus du lint habituel que le rendu est à jour, que la critique est écrite dans `fond.md` (« Critique, round N », « Note : x / 10 »), que la dernière note atteint 8 ou que trois rounds ont été faits, et que chaque paire de slides voisines signalée par le rendu a été re-tirée ou justifiée (« slides 05 et 06 : gardé car … »). Les tests ont montré qu'un agent pressé saute la critique : cette porte l'en empêche. Ne jamais livrer un deck qui ne la passe pas.
+
+
 - Retirer la slide règles et les slides en trop.
 - Ordonner selon le récit et découper en sections (le sous-titre de section de chaque slide doit suivre ce découpage).
 - Écrire le script de chaque orateur dans les notes : phrases parlées, 30 à 60 secondes par slide, le prénom de l'orateur en tête s'il y en a plusieurs.
@@ -296,7 +299,7 @@ Ce que le rapport ne voit pas, et qu'il faut chercher sur la planche : un titre 
 
 C'est là que le look généré revient le plus vite. Retour utilisateur réel : « trois chiffres alignés avec des filets, ça fait Claude, c'est vide ».
 
-- Jamais trois ou quatre chiffres de même taille en colonnes séparées par des filets.
+- Jamais trois chiffres ou plus de même taille sans un chiffre plus grand : `lint.py` le bloque, et ce blocage ne se justifie pas. Une barre de répartition garde ses étiquettes en petit, sous un chiffre héros.
 - Un chiffre héros qui domine (trois à cinq fois plus grand que les autres), les autres subordonnés.
 - Le chiffre vit dans un objet ou une figure du style : ticket, infographie hachurée, carte à cercles, line-up de festival, sommaire de magazine, colonne de répartition sur la grille.
 - Remplir le format : une slide de chiffres n'a pas de grand vide non composé.
@@ -354,7 +357,7 @@ python scripts/exporter.py mon-deck/deck.html --pdf --pptx
 - [ ] Les règles de couleur et de tampon du style sont respectées sur chaque slide.
 - [ ] Marqueur de page et repère de section sur chaque slide.
 - [ ] Aucune image répétée, détourages propres, crédits dans les notes.
-- [ ] `lint.py` sans bloquant, alertes justifiées.
+- [ ] `lint.py --livraison` sans bloquant (critique écrite, rythme réglé), alertes justifiées.
 - [ ] Aucun titre sur 3 lignes, aucun débordement : `rapport.txt` vide et planche vérifiée.
 - [ ] Critique écrite, note de 8 ou plus sans plafond (`references/critique.md`).
 - [ ] Aucun texte d'exemple de gabarit oublié (chercher « Kōri », « Valmont », « données fictives »).

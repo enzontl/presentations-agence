@@ -24,7 +24,7 @@ Ce registre ne donne jamais une police, une couleur ou un composant de remplacem
 | --- | --- | --- |
 | Titres étiquettes : « Contexte », « Notre solution », « Conclusion », « Merci » | bloquant, lint | Une phrase qui affirme la conclusion de la slide |
 | Puces à rallonge, plus de 5 lignes | alerte, lint | Une idée par slide, le reste dans les notes |
-| Trois ou quatre chiffres de même taille alignés, séparés de filets | alerte, lint | Un chiffre héros dans un objet du style (voir SKILL.md, « Slides de chiffres ») |
+| Trois chiffres ou plus de même taille, sans chiffre plus grand | bloquant, lint | Un chiffre héros dans un objet du style (voir SKILL.md, « Slides de chiffres ») |
 | La même image sur deux slides | bloquant, lint | Une image = une slide |
 | Lorem ipsum, rectangle gris, « [Image ici] » | bloquant, lint | Le vrai contenu, la vraie image |
 
@@ -38,7 +38,7 @@ Ces procédés sont apparus pour éviter la première vague, puis se sont géné
 | Fond crème partout « pour faire chic » | alerte | Le fond du style, et l'alternance qu'il prévoit |
 | Grain plaqué sur tout sans raison de style | alerte | Le grain fait partie du traitement d'image du style, pas un filtre global |
 | Une seule police sans caractère sur tout le deck | alerte | Les 3 ou 4 rôles typographiques de la fiche |
-| Slides voisines de même composition | alerte, rendu.py | `tirage.py`, puis `--redraw` |
+| Slides voisines de même composition | bloquant à la livraison si non justifié (`lint.py --livraison`) | `tirage.py`, puis `--redraw` |
 
 ## 4. Tics de contenu
 

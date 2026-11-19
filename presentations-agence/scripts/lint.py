@@ -4,6 +4,7 @@
   python lint.py mon-deck/deck.html                # rapport, code de sortie 1 s'il y a un BLOQUANT
   python lint.py mon-deck/deck.html --corriger     # répare aussi les espaces insécables
   python lint.py gabarits/... --exemples           # tolère le texte d'exemple des gabarits
+  python lint.py mon-deck/deck.html --livraison    # porte de sortie : critique écrite, rythme réglé
 
 Il lit le HTML et les feuilles de style locales, sans navigateur. Il attrape ce qu'un rendu
 ne montre pas (notes vides, superlatifs, image répétée, texte de gabarit oublié) et ce
@@ -164,6 +165,7 @@ def main():
     ap.add_argument("html")
     ap.add_argument("--corriger", action="store_true", help="répare les espaces insécables dans le texte")
     ap.add_argument("--exemples", action="store_true", help="tolère le texte d'exemple des gabarits")
+    ap.add_argument("--livraison", action="store_true", help="vérifie aussi que la critique est écrite et le rythme réglé")
     a = ap.parse_args()
     path = pathlib.Path(a.html)
     if a.corriger:
@@ -226,7 +228,7 @@ def main():
         heros = max(tailles) if tailles else 0
         for key, k in groupes.items():
             if k >= 3 and key[2] and int(key[2]) >= 60 and int(key[2]) == heros:
-                add(s.n, "ALERTE", f"{k} chiffres de même taille ({key[2]} px) : un héros et des subordonnés, dans un objet du style")
+                add(s.n, "BLOQUANT", f"{k} chiffres de même taille ({key[2]} px) et aucun plus grand : un chiffre héros, les autres en subordonnés (« Slides de chiffres »)")
         if re.search(r"\d{3}|\d\s?%|€", txt) and not re.search(r"source|donnees|d'apres|selon|fictive", norm(tout)):
             add(s.n, "ALERTE", "chiffres sans source visible ni dans les notes")
         sup = [w for w in SUPERLATIFS if re.search(r"\b" + w + r"\b", norm(txt))]
@@ -244,6 +246,24 @@ def main():
                 add(s.n, "BLOQUANT", f"image déjà utilisée slide {vus[img]:02d} : {img}")
             else:
                 vus[img] = s.n
+
+    if a.livraison:
+        d = path.parent
+        fond = (d / "fond.md").read_text() if (d / "fond.md").exists() else ""
+        rap = d / "renders" / "rapport.txt"
+        if not (d / "renders" / "titres.txt").exists() or not rap.exists():
+            add(0, "BLOQUANT", "pas de rendu à jour : lancer rendu.py --out renders avant de livrer")
+        if not re.search(r"Critique, round \d", fond) or not re.search(r"Note\s*:\s*\d", fond):
+            add(0, "BLOQUANT", "critique non écrite dans fond.md (format de references/critique.md : « Critique, round N », « Note : x / 10 »)")
+        else:
+            notes_c = [float(x.replace(",", ".")) for x in re.findall(r"Note\s*:\s*(\d+(?:[.,]\d)?)", fond)]
+            rounds = len(re.findall(r"Critique, round \d", fond))
+            if notes_c and notes_c[-1] < 8 and rounds < 3:
+                add(0, "BLOQUANT", f"dernière note {notes_c[-1]} / 10 après {rounds} round(s) : corriger et refaire un round (jusqu'à 8, ou 3 rounds)")
+        if rap.exists():
+            for n1, n2 in re.findall(r"slides (\d\d) et (\d\d) se ressemblent", rap.read_text()):
+                if not re.search(rf"slides? {n1} et {n2}\b.*(justif|voulu|gard)", fond, re.I):
+                    add(0, "BLOQUANT", f"slides {n1} et {n2} signalées trop semblables par le rendu : re-tirer l'une (tirage.py --redraw) ou justifier dans fond.md (« slides {n1} et {n2} : gardé car … »)")
 
     nb = sum(1 for v in res.values() for niv, _ in v if niv == "BLOQUANT")
     na = sum(1 for v in res.values() for niv, _ in v if niv == "ALERTE")
