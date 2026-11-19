@@ -11,6 +11,24 @@ C'est l'inverse d'un template. Un template part d'une grille vide et la remplit.
 
 Ce fichier contient le procédé commun à tous les styles. Chaque style a son fichier dans `references/`. **Lire en entier le fichier du style choisi avant de dessiner la première slide.**
 
+## Commandes
+
+Sans argument : un deck neuf, avec le procédé complet ci-dessous. Avec une commande, sur un deck qui existe (détail dans `references/commandes.md`) :
+
+| Commande | Ce qu'elle fait |
+| --- | --- |
+| `audit <deck>` | Critique notée d'un deck HTML, PDF ou PPTX, trois priorités, sans rien modifier |
+| `polish <deck>` | Finition : espaces, débordements, alignements, contrastes, notes, sans toucher aux layouts |
+| `plus-audacieux <deck> [slides]` | Monte l'échelle, le contraste et l'élément signature |
+| `plus-sobre <deck> [slides]` | Retire le décoratif, revient au fond de lecture, garde l'identité |
+| `refaire-chiffres <deck>` | Re-tire et reconstruit les slides de chiffres selon les règles |
+| `varier <deck>` | Casse les slides voisines trop semblables signalées par le rendu |
+| `changer-style <deck> <style>` | Même contenu dans un autre univers, dans un nouveau dossier |
+| `notes <deck>` | Écrit le script de l'orateur dans les notes |
+| `exporter <deck> [html, pdf, pptx]` | Livre le deck dans le format demandé |
+
+Une demande en langage naturel qui correspond à une commande (« critique mon deck », « rends-le plus punchy », « mes slides de chiffres sont plates ») suit la même procédure.
+
 ## Les 8 styles
 
 | Style | Fichier | Univers réel | Registre | Fond dominant |
@@ -345,3 +363,8 @@ python scripts/exporter.py mon-deck/deck.html --pdf --pptx
 - [ ] Script de l'orateur dans les notes de chaque slide.
 - [ ] Les slides validées par l'utilisateur n'ont pas été retouchées.
 - [ ] Le check propre au style (fin du fichier du style) est passé.
+
+## Tester le skill
+
+- `evals/` contient trois cas réels (pitch en autonomie, audit d'un deck généré, soutenance à partir d'un CSV), au format lu par `claude plugin eval`. Chaque cas a sa demande, sa description du résultat attendu et ses critères vérifiables. Lancer avec : `claude plugin eval . --allow-tools Write,Edit,Bash --scaffold` depuis le dossier du skill (exécutions réelles et facturées).
+- Pour comparer deux decks à l'aveugle (avec et sans le skill, ou deux versions) : `python scripts/comparer.py preparer --a <renders A> --b <renders B>`, faire noter les images par un juge qui ne voit que `grille.md`, puis `python scripts/comparer.py resultat comparaison/`.

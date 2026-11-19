@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: soutenance-donnees-csv
+expected_outcome: |
+  Un deck de 6 slides dans soutenance/, probablement en data-journalisme ou rapport suisse, dont les graphiques et chiffres viennent exactement de donnees.csv (taux de réussite de 41,2 à 51,3 %, abandons de 312 à 229), avec la source citée, des titres qui affirment une découverte, sans tic bloquant.
+context:
+  scaffold_script: place-files.sh

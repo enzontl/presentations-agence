@@ -32,6 +32,10 @@ Chaque style a ses gabarits validés dans [`presentations-agence/gabarits/`](pre
 7. **Le contrôle des tics** : un détecteur statique bloque les signes du look généré (dégradé violet, emojis, titres étiquettes, image répétée, texte de gabarit oublié) et signale le reste.
 8. **Le deck final**, avec le script de l'orateur dans les notes, en HTML autonome, PDF ou PowerPoint.
 
+## Commandes
+
+Sans argument, le skill fait un deck neuf. Avec une commande, il travaille sur un deck existant : `audit` (critique notée sans rien modifier, aussi pour un PDF ou un PPTX), `polish`, `plus-audacieux`, `plus-sobre`, `refaire-chiffres`, `varier`, `changer-style`, `notes`, `exporter`. Exemple : `/presentations-agence audit mon-deck/deck.html`.
+
 ## Installer
 
 - **Claude.ai ou l'app Claude** : télécharge `presentations-agence.skill` dans les [releases](../../releases) et ouvre-le, puis clique « Save skill ».
@@ -52,9 +56,14 @@ Dans `presentations-agence/scripts/`, utilisables seuls :
 | `polices.py` | Télécharge des polices Google Fonts en local et écrit `fonts.css` |
 | `rendu.py` | Rend chaque slide en PNG, planche contact et planche floue, titres seuls, signale titres sur 3 lignes, débordements, polices manquantes, slides voisines trop semblables |
 | `export.py` | Un seul fichier HTML hors ligne : images WebP et polices intégrées, navigation au clavier, notes |
+| `comparer.py` | Compare deux decks à l'aveugle : planches X et Y tirées au sort, grille de notation, résultat pondéré |
 | `exporter.py` | PDF (une page par slide) et PowerPoint (image par slide, script dans les notes) |
 
 Prérequis : Python 3.10 ou plus, `pip install pillow numpy playwright python-pptx`, et Google Chrome (ou `playwright install chromium`).
+
+## Évaluations
+
+`presentations-agence/evals/` contient trois cas au format `claude plugin eval` : un pitch fait en autonomie, l'audit d'un deck généré typique, une soutenance construite à partir d'un CSV. Chaque cas a ses critères vérifiables (deck sans tic bloquant, layouts tirés, chiffres exacts, titres qui affirment…).
 
 ## Les exemples
 

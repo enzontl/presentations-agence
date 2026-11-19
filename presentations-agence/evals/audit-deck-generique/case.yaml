@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: audit-deck-generique
+expected_outcome: |
+  Un audit du deck selon la commande audit : lint.py lancé (dégradé violet, emojis, titres étiquettes, superlatifs, cartes symétriques), rendu ou captures regardés, une note sur 10 avec plafonds, les trois problèmes les plus graves avec slide, défaut et correction, et aucune modification de deck.html.
+context:
+  scaffold_script: place-files.sh
