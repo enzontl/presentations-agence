@@ -62,12 +62,13 @@ Proposer toujours à l'utilisateur **deux styles adaptés**, avec une phrase de 
 
 ### 1. Le fond d'abord
 
-Aucune slide avant d'avoir trois choses : le message en une phrase, la storyline, les sources de chaque chiffre. Un beau deck sur un fond flou reste un deck faible, et retoucher la forme après coup coûte trois fois plus cher.
+Aucune slide avant d'avoir trois choses : le message en une phrase, la storyline, les sources de chaque chiffre. Un beau deck sur un fond flou reste un deck faible, et retoucher la forme après coup coûte trois fois plus cher. **Lire `references/recit.md`** : affirmation et preuve, les structures (SCQA, pyramide, problème-solution-preuve…), les plans types prêts pour `tirage.py`, le minutage, le script des notes.
 
 1. Lire les consignes en entier. Repérer les parties imposées, la durée, le public, les critères d'évaluation.
 2. Ouvrir une page de travail qui suit ces parties (doc, Notion ou fichier `fond.md` dans le dossier du deck).
 3. Faire la recherche et sourcer chaque chiffre (source, date, lien). Ne jamais inventer un chiffre : s'il manque, le demander à l'utilisateur ou l'indiquer comme hypothèse.
-4. Écrire la storyline sous forme de liste de titres. Test : lus d'affilée, les titres doivent raconter toute l'histoire.
+4. Choisir une structure et écrire la storyline sous forme de liste de titres-affirmations. Test : lus d'affilée, les titres doivent raconter toute l'histoire.
+5. En déduire le plan : un type de contenu par slide (`references/recit.md` donne des plans types par genre de deck).
 
 ### 2. Les questions de style
 
@@ -143,7 +144,7 @@ Les retours typiques, à anticiper dès la première version :
 
 ### 9. Les livrables annexes, si utile
 
-Script complet de l'oral, fiche de sources pour les questions du jury, export HTML autonome, PDF.
+Script complet de l'oral, fiche de sources et réponses aux 5 questions probables (`references/recit.md`), export HTML autonome, PDF, PowerPoint (`scripts/exporter.py`).
 
 ## Structure technique du deck
 
@@ -250,8 +251,11 @@ Autres traitements :
 Regarder le rendu réel est la seule façon de voir ce que l'utilisateur verra. Le code HTML ne montre ni un titre sur trois lignes, ni un tampon qui cache un chiffre.
 
 ```bash
+python scripts/lint.py mon-deck/deck.html --corriger      # d'abord : les tics visibles dans le code
 python scripts/rendu.py mon-deck/deck.html --out mon-deck/renders
 ```
+
+`lint.py` lit le HTML sans navigateur et attrape les tics du registre `references/tics.md` : dégradé violet, emojis, titres étiquettes (« Contexte », « Conclusion »), texte d'exemple de gabarit oublié, image répétée, section à construire, lorem ipsum (bloquants), et en alerte trois chiffres égaux sans héros, chiffres sans source, superlatifs sans preuve, notes vides, listes trop longues, espaces non insécables (`--corriger` les répare). Corriger chaque bloquant ; garder une alerte seulement avec une raison en une phrase.
 
 Le script rend chaque slide en PNG 1920x1080 (Chrome sans interface, animations coupées, polices locales), assemble `planche.png` et écrit `rapport.txt` avec les problèmes détectés : titre sur 3 lignes ou plus, élément qui sort de la slide, texte coupé dans sa boîte, image manquante, police non chargée, texte trop petit. Option `--slides 3,5` pour ne rendre que certaines slides.
 
@@ -291,6 +295,8 @@ C'est là que le look généré revient le plus vite. Retour utilisateur réel :
 
 ## Interdits communs (anti-look généré)
 
+Le registre complet et daté est dans `references/tics.md` (avec ce que `lint.py` détecte). La liste courte :
+
 Valables pour tous les styles. Chaque fichier de style ajoute les siens.
 
 - Rangées de cartes symétriques, icônes dans des ronds, pictogrammes génériques à la place d'une donnée.
@@ -314,6 +320,15 @@ python scripts/export.py mon-deck/deck.html --out mon-deck/deck-autonome.html
 
 Le script assemble tout dans un seul fichier : feuilles de style incluses, images converties en WebP (1920 px max, qualité 80) et intégrées en base64, polices intégrées en base64, scripts externes intégrés. Il ajoute une navigation au clavier (flèches, espace, Page suivante, clic), `N` pour afficher les notes, `F` pour le plein écran, une mise à l'échelle à la taille de la fenêtre, et écrit les numéros de page en dur. Compter environ 0,5 Mo par slide. Le fichier s'ouvre hors ligne le jour de l'oral.
 
+### PDF et PowerPoint
+
+```bash
+python scripts/exporter.py mon-deck/deck.html --pdf --pptx
+```
+
+- **PDF** : une page 1920x1080 par slide, fonds et 3D compris, texte sélectionnable. Pour l'envoi par mail et l'impression.
+- **PPTX** : une slide 16:9 par slide, l'image en plein cadre et le script de l'orateur dans les notes PowerPoint. S'ouvre dans PowerPoint, Keynote et Google Slides (Importer). Le texte n'y est pas modifiable : pour corriger, corriger le HTML et réexporter. Le dire à l'utilisateur quand il demande un PowerPoint « modifiable ».
+
 ## Check commun avant de livrer
 
 - [ ] Le deck se comprend en ne lisant que les titres.
@@ -321,6 +336,7 @@ Le script assemble tout dans un seul fichier : feuilles de style incluses, image
 - [ ] Les règles de couleur et de tampon du style sont respectées sur chaque slide.
 - [ ] Marqueur de page et repère de section sur chaque slide.
 - [ ] Aucune image répétée, détourages propres, crédits dans les notes.
+- [ ] `lint.py` sans bloquant, alertes justifiées.
 - [ ] Aucun titre sur 3 lignes, aucun débordement : `rapport.txt` vide et planche vérifiée.
 - [ ] Critique écrite, note de 8 ou plus sans plafond (`references/critique.md`).
 - [ ] Aucun texte d'exemple de gabarit oublié (chercher « Kōri », « Valmont », « données fictives »).
