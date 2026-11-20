@@ -60,6 +60,19 @@ VOISINS = {
     "methode": ["contexte"], "equipe": ["persona"], "campagne": ["offre"], "sommaire": ["etapes"], "contexte": ["citation", "persona"],
     "closing": ["citation"], "cover": ["citation"],
 }
+# fond d'impact par style : une slide sur trois le prend (les slides 3, 6, 9…), pour casser l'uniformité
+FOND_IMPACT = {
+    "editorial-objet-reel": "sombre #111111 (texture sombre)",
+    "studio-sombre": None,  # déjà tout en fond nuit : l'alternance vient des slides objet
+    "rapport-suisse": "fond inversé #141414, ou champ d'accent pleine hauteur",
+    "une-de-journal": "page « édition spéciale » : bandeau rouge et gros titre seul",
+    "affiche-serigraphie": "aplat d'une encre pleine page, texte en réserve",
+    "magazine-de-mode": "photo plein cadre",
+    "data-journalisme": "fond nuit #17232C",
+    "brutalisme-web": "terminal, fond #0A0A0A",
+}
+SOMBRES = {"sombre", "nuit", "photo"}
+
 # ordre de lecture des formes : la première trouvée dans la description gagne
 FORMES = [
     ("objet3d", ["objet 3d", "slide objet", "cyclo", "objet eclate", "objets alignes", "deux objets"]),
@@ -152,6 +165,10 @@ def tirer(style, plan, seed, fixes=None):
         choix = rng.choices(cands, weights=ws, k=1)[0]
         res.append(dict(choix, slide=i + 1, demande=t))
         deja.add(choix["id"])
+    impact = FOND_IMPACT.get(style)
+    for s_ in res:
+        clair = s_.get("fond") not in SOMBRES if s_.get("source") == "gabarit" else True
+        s_["fond_conseille"] = impact if (impact and s_["slide"] % 3 == 0 and clair) else None
     return res
 
 
@@ -194,6 +211,8 @@ def main():
         mark = "gabarit" if s["source"] == "gabarit" else "à construire d'après la fiche"
         print(f"{s['slide']:02d}  {s['demande']:18} {s['forme']:9} {s['id']}  ({mark})")
         print(f"     {s['description']}")
+        if s.get("fond_conseille"):
+            print(f"     Fond : {s['fond_conseille']} (une slide sur trois en fond d'impact)")
     pathlib.Path(a.out).write_text(json.dumps(dict(style=a.style, seed=seed, slides=res), ensure_ascii=False, indent=1))
     h = lire_hist() + [dict(style=a.style, id=s["id"], t=int(time.time())) for s in res]
     HIST.parent.mkdir(parents=True, exist_ok=True)

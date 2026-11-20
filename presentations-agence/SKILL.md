@@ -121,7 +121,7 @@ python scripts/tirage.py --style une-de-journal --plan cover,sommaire,contexte,c
 python scripts/tirage.py --style une-de-journal --plan ... --out mon-deck/tirage.json --redraw 4   # re-tirer une slide
 ```
 
-Le plan liste un type de contenu par slide (`--types` pour la liste). Le script tire un layout par slide parmi les gabarits validés et les layouts de la fiche, sans deux formes identiques côte à côte, sans répéter un layout, en évitant ceux des projets récents. Garder le tirage sauf raison écrite (contenu qui ne rentre pas) ; dans ce cas, `--redraw` plutôt qu'un choix à la main.
+Le plan liste un type de contenu par slide (`--types` pour la liste). Le tirage indique aussi un fond d'impact une slide sur trois (« Fond : … ») : le suivre, c'est ce qui évite les slides voisines semblables dans les styles uniformes (suisse, data, journal). Le script tire un layout par slide parmi les gabarits validés et les layouts de la fiche, sans deux formes identiques côte à côte, sans répéter un layout, en évitant ceux des projets récents. Garder le tirage sauf raison écrite (contenu qui ne rentre pas) ; dans ce cas, `--redraw` plutôt qu'un choix à la main.
 
 Puis monter le dossier du deck :
 
@@ -155,7 +155,7 @@ Les retours typiques, à anticiper dès la première version :
 
 ### 8. Le deck final
 
-**Porte de sortie, obligatoire** : `python scripts/lint.py mon-deck/deck.html --livraison` doit finir sans bloquant. Il vérifie en plus du lint habituel que le rendu est à jour, que la critique est écrite dans `fond.md` (« Critique, round N », « Note : x / 10 »), que la dernière note atteint 8 ou que trois rounds ont été faits, et que chaque paire de slides voisines signalée par le rendu a été re-tirée ou justifiée (« slides 05 et 06 : gardé car … »). Les tests ont montré qu'un agent pressé saute la critique : cette porte l'en empêche. Ne jamais livrer un deck qui ne la passe pas.
+**Porte de sortie, obligatoire** : `python scripts/lint.py mon-deck/deck.html --livraison` doit finir sans bloquant. Il vérifie en plus du lint habituel que le rendu est à jour, que la critique est écrite dans `fond.md` (« Critique, round N », « Note : x / 10 »), que la dernière note atteint 8 ou que trois rounds ont été faits, et qu'il ne reste qu'une paire de slides voisines semblables au plus, justifiée (« slides 05 et 06 : gardé car … »), avec deux rounds de critique dans ce cas. Au-delà d'une paire, aucune justification n'est acceptée : re-tirer ou changer fond, côté ou forme. Les tests ont montré qu'un agent pressé saute la critique : cette porte l'en empêche. Ne jamais livrer un deck qui ne la passe pas.
 
 
 - Retirer la slide règles et les slides en trop.

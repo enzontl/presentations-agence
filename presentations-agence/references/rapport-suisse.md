@@ -20,7 +20,7 @@ Univers de référence : les rapports annuels des grandes institutions suisses, 
 | Rôle | Hex | Règle |
 | --- | --- | --- |
 | Fond papier | `#F4F2EE` | Fond de toutes les slides de lecture |
-| Fond inversé | `#141414` | 2 ou 3 slides d'impact maximum (cover, intercalaires) |
+| Fond inversé | `#141414` | Une slide sur trois environ : cover, intercalaires, chiffre clé. Sans lui, toutes les slides se ressemblent (même papier, même grille) |
 | Encre | `#141414` | Titres, chiffres, texte |
 | Gris secondaire | `#77746E` | Légendes, sous-titres, données de contexte |
 | Filet | `#CFCBC3` | Filets de 1 px, grille des tableaux |
@@ -122,4 +122,5 @@ Largeurs utiles sur la grille : 3 colonnes = 414 px, 4 colonnes = 560 px, 6 colo
 - [ ] Folio et numérotation présents et cohérents sur chaque slide.
 - [ ] Chiffres en `tabular-nums`, unités écrites, sources en mono.
 - [ ] Au moins 35 % de vide sur chaque slide.
+- [ ] Une slide sur trois environ en fond inversé ou en champ d'accent : le style est uniforme par nature, c'est ce qui donne le rythme (tests : sans alternance, le juge plafonne le deck pour slides voisines semblables).
 - [ ] Aucun texte posé sur une photo.

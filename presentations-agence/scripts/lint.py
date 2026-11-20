@@ -261,9 +261,16 @@ def main():
             if notes_c and notes_c[-1] < 8 and rounds < 3:
                 add(0, "BLOQUANT", f"dernière note {notes_c[-1]} / 10 après {rounds} round(s) : corriger et refaire un round (jusqu'à 8, ou 3 rounds)")
         if rap.exists():
-            for n1, n2 in re.findall(r"slides (\d\d) et (\d\d) se ressemblent", rap.read_text()):
+            paires = re.findall(r"slides (\d\d) et (\d\d) se ressemblent", rap.read_text())
+            rounds = len(re.findall(r"Critique, round \d", fond))
+            if len(paires) >= 2:
+                add(0, "BLOQUANT", f"{len(paires)} paires de slides voisines trop semblables : re-tirer (tirage.py --redraw) ou changer fond, côté ou forme jusqu'à n'en garder qu'une. Une seule justification est acceptée par deck.")
+            elif paires:
+                n1, n2 = paires[0]
                 if not re.search(rf"slides? {n1} et {n2}\b.*(justif|voulu|gard)", fond, re.I):
-                    add(0, "BLOQUANT", f"slides {n1} et {n2} signalées trop semblables par le rendu : re-tirer l'une (tirage.py --redraw) ou justifier dans fond.md (« slides {n1} et {n2} : gardé car … »)")
+                    add(0, "BLOQUANT", f"slides {n1} et {n2} signalées trop semblables : re-tirer l'une, ou justifier dans fond.md (« slides {n1} et {n2} : gardé car … »)")
+                if rounds < 2:
+                    add(0, "BLOQUANT", "le rendu signale encore une paire de voisines : faire au moins deux rounds de critique")
 
     nb = sum(1 for v in res.values() for niv, _ in v if niv == "BLOQUANT")
     na = sum(1 for v in res.values() for niv, _ in v if niv == "ALERTE")
