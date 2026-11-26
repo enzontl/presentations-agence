@@ -4,7 +4,7 @@ Un skill Claude qui fabrique des présentations de niveau agence, dans 10 styles
 
 Le principe : chaque deck emprunte les codes d'un objet qui existe vraiment (un ticket de caisse, une une de journal, une affiche sérigraphiée, un rapport annuel suisse). Le format raconte le concept avant même que le texte soit lu. C'est l'inverse d'un template, qui part d'une grille vide et la remplit.
 
-![Test 1 : pitch marketing, 8 styles](examples/planches/planche-kori.jpg)
+![Test 1 : pitch marketing, cover et slide de chiffres dans 8 styles](examples/planches/planche-kori.jpg)
 
 ## Les 10 styles
 
@@ -21,7 +21,7 @@ Le principe : chaque deck emprunte les codes d'un objet qui existe vraiment (un 
 | Espace de travail | Outils de travail en équipe (type Notion) : bases de données, kanban, surligneurs | Gestion de projet, plans de lancement, soutenances en équipe |
 | Heure bleue | Un lieu en 3D au crépuscule derrière tout le deck, qui se construit au fil du récit | Pitchs longs autour d'un lieu : immobilier, ville, magasin, usine |
 
-Chaque style a ses gabarits validés dans [`presentations-agence/gabarits/`](presentations-agence/gabarits) et sa fiche dans [`presentations-agence/references/`](presentations-agence/references) : palette avec le rôle de chaque couleur, polices Google Fonts, éléments signature, traitement des images, 12 à 16 layouts, ton, interdits et check avant de livrer.
+Chaque style a sa fiche dans [`presentations-agence/references/`](presentations-agence/references) : palette avec le rôle de chaque couleur, polices Google Fonts, éléments signature, traitement des images, 12 à 16 layouts, ton, interdits et check avant de livrer. Neuf styles ont aussi des gabarits validés dans [`presentations-agence/gabarits/`](presentations-agence/gabarits) (34 en tout) ; Heure bleue, qui demande un monde 3D sur mesure, n'a que sa fiche et son annexe technique.
 
 ## Ce que fait le skill
 
@@ -29,10 +29,11 @@ Chaque style a ses gabarits validés dans [`presentations-agence/gabarits/`](pre
 2. **Les questions de style** sous forme de choix, avec deux styles recommandés et une option audacieuse.
 3. **Les images** : recherche Unsplash sans contourner les protections anti-bot, téléchargement en haute définition, traitement Python propre au style (étalonnage, dégradé sous le texte, grain, trame deux encres, tramage 1 bit).
 4. **Le tirage des layouts** : un script tire au sort un layout par slide (jamais deux formes identiques côte à côte, jamais le même layout deux fois, en évitant ceux des projets récents). Un modèle qui choisit seul revient toujours au même layout.
-5. **Un template monté depuis 30 gabarits validés**, avec une slide « règles », rempli avec le vrai contenu.
-6. **La boucle de rendu et de critique** : chaque slide rendue en PNG, une planche contact, une planche floue pour juger les masses, le test des titres seuls, la détection des slides voisines trop semblables, puis une critique notée sur les captures (sept passes, plafonds, trois rounds au plus).
-7. **Le contrôle des tics** : un détecteur statique bloque les signes du look généré (dégradé violet, emojis, titres étiquettes, image répétée, texte de gabarit oublié) et signale le reste.
-8. **Le deck final**, avec le script de l'orateur dans les notes, en HTML autonome, PDF ou PowerPoint.
+5. **Un template monté depuis 34 gabarits validés**, avec une slide « règles », rempli avec le vrai contenu. Chaque fond d'impact revient une slide sur trois pour casser l'uniformité.
+6. **La boucle de rendu et de critique** : chaque slide rendue en PNG, une planche contact, une planche floue pour juger les masses, le test des titres seuls, la détection des textes qui se chevauchent et des slides voisines trop semblables, puis une critique notée sur les captures (sept passes, plafonds, trois rounds au plus).
+7. **Le contrôle des tics** : un détecteur statique bloque les signes du look généré (dégradé violet, emojis, titres étiquettes, chiffres égaux sans héros, image répétée, texte de gabarit oublié) et signale le reste.
+8. **La porte de livraison** : un deck ne sort pas sans critique écrite, sans rendu à jour, ou avec plus d'une paire de slides voisines semblables.
+9. **Le deck final**, avec le script de l'orateur dans les notes (scène par scène pour un oral à plusieurs), une feuille de calcul derrière chaque chiffre, des annexes de secours, en HTML autonome, PDF ou PowerPoint.
 
 ## Mise en scène
 
@@ -57,11 +58,11 @@ Dans `presentations-agence/scripts/`, utilisables seuls :
 | --- | --- |
 | `tirage.py` | Tire au sort un layout par slide selon le plan (types de contenu), avec historique entre projets |
 | `nouveau_deck.py` | Monte le dossier d'un deck : CSS, polices, textures, `deck.html` assemblé depuis les gabarits |
-| `lint.py` | Détecte les tics du look généré dans le HTML, sans navigateur, et répare les espaces insécables |
+| `lint.py` | Détecte les tics du look généré dans le HTML, sans navigateur, répare les espaces insécables ; `--livraison` sert de porte de sortie |
 | `images.py` | Recadrage, étalonnage par style, dégradé, grain, trame, textures papier |
 | `polices.py` | Télécharge des polices Google Fonts en local et écrit `fonts.css` |
-| `rendu.py` | Rend chaque slide en PNG, planche contact et planche floue, titres seuls, signale titres sur 3 lignes, débordements, polices manquantes, slides voisines trop semblables |
-| `export.py` | Un seul fichier HTML hors ligne : images WebP et polices intégrées, navigation au clavier, notes |
+| `rendu.py` | Rend chaque slide en PNG, planche contact et planche floue, titres seuls ; signale titres sur 3 lignes, débordements, textes qui se chevauchent, polices manquantes, slides voisines trop semblables |
+| `export.py` | Un seul fichier HTML hors ligne : images WebP et polices intégrées, navigation au clavier, notes, vue d'ensemble, vue présentateur, mise en scène |
 | `comparer.py` | Compare deux decks à l'aveugle : planches X et Y tirées au sort, grille de notation, résultat pondéré |
 | `exporter.py` | PDF (une page par slide) et PowerPoint (image par slide, script dans les notes) |
 
@@ -69,7 +70,17 @@ Prérequis : Python 3.10 ou plus, `pip install pillow numpy playwright python-pp
 
 ## Évaluations
 
-`presentations-agence/evals/` contient trois cas au format `claude plugin eval` : un pitch fait en autonomie, l'audit d'un deck généré typique, une soutenance construite à partir d'un CSV. Chaque cas a ses critères vérifiables (deck sans tic bloquant, layouts tirés, chiffres exacts, titres qui affirment…).
+`presentations-agence/evals/` contient trois cas au format `claude plugin eval` : un pitch fait en autonomie, l'audit d'un deck généré typique, une soutenance construite à partir d'un CSV. Chaque cas a ses critères vérifiables (deck sans tic bloquant, layouts tirés, chiffres exacts, titres qui affirment, porte de livraison…).
+
+Résultats, chaque cas lancé une fois avec et sans le skill (Sonnet pour les decks, Haiku pour l'audit), decks jugés à l'aveugle par un juge qui ne voit que les images :
+
+| Cas | Avec le skill | Sans le skill |
+| --- | --- | --- |
+| Critères vérifiables (3 cas) | 95 % | 53 % |
+| Soutenance, note à l'aveugle | 8,2 puis 7,9 / 10 | 4,9 et 5,3 / 10 |
+| Pitch, note à l'aveugle | 7,7 puis 6,0 / 10 | 5,9 et 6,0 / 10 |
+
+Le 6,0 du pitch vient d'un run qui justifiait ses slides voisines semblables au lieu de les re-tirer ; la porte de livraison bloque ce cas depuis la v1.5. Une seule exécution par cas : les notes varient d'un run à l'autre.
 
 ## Les exemples
 
@@ -78,15 +89,17 @@ Le skill a été testé sur deux sujets fictifs, avec une cover et une slide de 
 - **Kōri**, une marque fictive de cold brew en canette (pitch marketing) ;
 - **le bilan 2025 des bibliothèques de Valmont**, une ville fictive (présentation sobre).
 
-Toutes les données sont fictives. Les 8 decks de test sont dans [`examples/decks/`](examples/decks) : ouvre un fichier dans le navigateur, puis flèches pour avancer, `N` pour les notes, `F` pour le plein écran.
+Toutes les données sont fictives. Les decks de test sont dans [`examples/decks/`](examples/decks), un par style, plus un deck de démonstration du style Espace de travail : ouvre un fichier dans le navigateur, puis flèches pour avancer, `O` vue d'ensemble, `P` vue présentateur, `N` notes, `F` plein écran.
 
-![Test 2 : présentation sobre, 8 styles](examples/planches/planche-valmont.jpg)
+![Test 2 : présentation sobre, cover et slide de chiffres dans 8 styles](examples/planches/planche-valmont.jpg)
+
+![Style Espace de travail : question, panneau de partie, base de données, kanban](examples/planches/planche-espace-de-travail.jpg)
 
 ## Crédits photo
 
 Photos Unsplash, sous licence Unsplash : Nathan Dumlao, Eiliv Aceron, Anton Luk, Zoshua Colah, Thomas Bormans, Priscilla Du Preez.
 
-Le style « Studio sombre » reprend la direction artistique du deck [Are LEGO themes real universes?](https://github.com/enzontl/lego-universes).
+Le style « Studio sombre » reprend la direction artistique du deck [Are LEGO themes real universes?](https://github.com/enzontl/lego-universes). Le style « Espace de travail » et la vue présentateur s'inspirent du deck de gestion de projet « Singulier. » ; le style « Heure bleue », les marques au crayon et l'audit des chevauchements s'inspirent du pitch [nexity-ai-strategy](https://github.com/Exowz/nexity-ai-strategy).
 
 ## Licence
 
