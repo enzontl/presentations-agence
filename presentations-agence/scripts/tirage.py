@@ -32,22 +32,22 @@ HIST = pathlib.Path.home() / ".cache" / "presentations-agence" / "historique.jso
 
 # type de contenu -> mots qui le signalent dans la colonne « Contenu » des fiches
 TYPES = {
-    "cover": ["cover", "couverture", "une"],
+    "cover": ["cover", "couverture", "une", "question d'ouverture"],
     "sommaire": ["sommaire", "intercalaire", "structure"],
     "chiffre-cle": ["chiffre cle", "le chiffre"],
     "plusieurs-chiffres": ["plusieurs chiffres", "trois chiffres", "chiffres cles", "en chiffres", "synthese chiffree", "objectifs", "kpi", "chiffres"],
-    "evolution": ["evolution"],
-    "comparaison": ["comparaison", "comparer", "classement", "observe", "insight", "relation", "scores", "tailles de groupes", "comparaison de profils"],
+    "evolution": ["evolution", "avancement", "sprints"],
+    "comparaison": ["risques", "comparaison", "comparer", "classement", "observe", "insight", "relation", "scores", "tailles de groupes", "comparaison de profils"],
     "avant-apres": ["avant"],
     "repartition": ["repartition", "proportion", "tableau chiffre", "tableau financier", "tableau", "prix"],
     "offre": ["offre", "gamme", "produit", "merch"],
-    "etapes": ["etapes", "segments", "processus", "roadmap", "planning", "chronologie", "historique", "calendrier", "programme", "parcours", "agenda"],
+    "etapes": ["backlog", "priorites", "processus", "escalade", "etapes", "segments", "processus", "roadmap", "planning", "chronologie", "historique", "calendrier", "programme", "parcours", "agenda"],
     "persona": ["persona", "portrait", "interview", "temoignage", "besoin", "client"],
-    "citation": ["citation", "statement", "manifeste", "vision", "positionnement", "engagement", "fin d'une epoque"],
-    "territoire": ["territoire", "carte"],
+    "citation": ["demo", "citation", "statement", "manifeste", "vision", "positionnement", "engagement", "fin d'une epoque"],
+    "territoire": ["territoire", "carte", "plan d'espace"],
     "methode": ["methode", "methodologie", "sources", "reseau, espace"],
     "closing": ["closing", "conclusion", "derniere"],
-    "equipe": ["equipe", "partenaires", "organisation"],
+    "equipe": ["equipe", "partenaires", "organisation", "roles", "decisions", "parties prenantes", "capacite"],
     "campagne": ["campagne", "visuels", "inspiration", "moodboard", "fidelite", "acces"],
     "contexte": ["contexte", "probleme", "idee centrale", "anatomie"],
 }
@@ -70,6 +70,7 @@ FOND_IMPACT = {
     "magazine-de-mode": "photo plein cadre",
     "data-journalisme": "fond nuit #17232C",
     "brutalisme-web": "terminal, fond #0A0A0A",
+    "espace-de-travail": "panneau pastel plein cadre, ou chiffre serif géant sur fond #F7F6F3",
 }
 SOMBRES = {"sombre", "nuit", "photo"}
 

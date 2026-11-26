@@ -1,0 +1,4 @@
+Inter:wght@400;500;600;700
+Instrument Serif:ital@0;1
+Caveat:wght@600;700
+IBM Plex Mono:wght@400;500

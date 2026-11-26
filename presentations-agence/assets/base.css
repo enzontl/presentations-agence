@@ -39,3 +39,16 @@ body.deck{background:#2b2b2b;counter-reset:page;padding:48px 0;display:flex;flex
 .deck-live .slide.is-active [data-anim=fade]{animation-name:fade;animation-duration:1s}
 .deck-live .slide.is-active [data-anim=wipe]{animation-name:wipe;animation-duration:.9s}
 @media (prefers-reduced-motion:reduce){.deck-live .slide [data-anim]{opacity:1!important;animation:none!important}}
+
+/* Retour en arrière : les entrées viennent d'en haut au lieu d'en bas (export.py ajoute .deck-back). */
+@keyframes rise-back{from{opacity:0;transform:translateY(-40px)}to{opacity:1;transform:none}}
+.deck-live.deck-back .slide.is-active [data-anim=rise]{animation-name:rise-back}
+
+/* Surligneur qui se trace de gauche à droite sur un mot clé du titre :
+   <mark class="surligneur" style="--surligneur:#FFE89E">mot</mark> */
+mark.surligneur{color:inherit;padding:0 .14em;border-radius:.18em;box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  background:linear-gradient(var(--surligneur,#FFE89E),var(--surligneur,#FFE89E)) no-repeat 0 60%/100% 78%}
+/* une animation, pas une transition : la slide passe de display:none à block, une transition ne jouerait pas */
+@keyframes surligne{from{background-size:0% 78%}to{background-size:100% 78%}}
+.deck-live .slide.is-active mark.surligneur{animation:surligne .6s cubic-bezier(.2,0,0,1) both;animation-delay:calc(.35s + var(--i,0) * 120ms)}
+@media (prefers-reduced-motion:reduce){.deck-live .slide mark.surligneur{animation:none!important}}

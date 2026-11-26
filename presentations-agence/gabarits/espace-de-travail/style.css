@@ -1,0 +1,61 @@
+/* espace-de-travail : jetons et classes du style. Copier en style.css dans le dossier du deck. */
+:root{
+  --bg:#FFFFFF; --bg2:#F7F6F3; --ink:#191918; --text:#37352F; --muted:#787774; --rule:#E8E7E3;
+  /* surligneurs (titres) */
+  --nh-jaune:#FFE89E; --nh-menthe:#D4F4EA; --nh-violet:#EAD9FF; --nh-bleu:#D1EAFF; --nh-peche:#FFE0C8; --nh-rouge:#FADAD9;
+  /* panneaux de section */
+  --p-jaune:#FFE18C; --p-violet:#E1C9FF; --p-bleu:#BFE0FF; --p-vert:#BCEFC9; --p-peche:#FFD5B4;
+  /* étiquettes (texte / fond) */
+  --t-gris:#787774; --t-gris-bg:#F1F1EF; --t-orange:#D9730D; --t-orange-bg:#FBECDD;
+  --t-vert:#448361; --t-vert-bg:#EDF3EC; --t-bleu:#337EA9; --t-bleu-bg:#E7F3F8;
+  --t-violet:#9065B0; --t-violet-bg:#F6F3F9; --t-rouge:#D44C47; --t-rouge-bg:#FDEBEC;
+  --f-sans:"Inter",system-ui,sans-serif; --f-serif:"Instrument Serif",Georgia,serif;
+  --f-main:"Caveat",cursive; --f-mono:"IBM Plex Mono",monospace;
+  --ease:cubic-bezier(.2,0,0,1);
+}
+.slide{background:var(--bg);color:var(--ink);font-family:var(--f-sans);font-feature-settings:"cv11","lnum"}
+/* en-tête : intertitre manuscrit, titre avec surligneur, ligne de preuve */
+.tete{left:160px;right:160px;top:64px;text-align:center}
+.kicker{font:600 30px/1 var(--f-main);letter-spacing:.04em;text-transform:uppercase;color:var(--t-rouge);margin-bottom:10px}
+.titre{font:600 64px/1.12 var(--f-sans);letter-spacing:-.022em;color:var(--ink);text-wrap:balance}
+.preuve{font:400 24px/1.45 var(--f-sans);color:var(--text);margin:14px auto 0;max-width:1150px}
+.preuve b{color:var(--ink);font-weight:600}
+code{font:500 .82em var(--f-mono);background:var(--t-gris-bg);color:var(--t-rouge);padding:.08em .35em;border-radius:5px}
+/* base de données : la fenêtre */
+.base{background:#fff;border:1px solid var(--rule);border-radius:14px;box-shadow:0 1px 0 rgba(15,15,15,.04),0 18px 40px -24px rgba(15,15,15,.18);overflow:hidden;font-size:21px;color:var(--text)}
+.base-tete{display:flex;align-items:center;gap:14px;padding:16px 22px 12px}
+.base-tete b{font:600 22px/1 var(--f-sans);color:var(--ink)}
+.base-tete .meta{margin-left:auto;font:400 17px/1 var(--f-mono);color:var(--muted)}
+.onglets{display:flex;gap:6px;padding:0 22px;border-bottom:1px solid var(--rule)}
+.onglets span{font:500 17px/1 var(--f-sans);color:var(--muted);padding:9px 10px;border-bottom:2px solid transparent}
+.onglets span.on{color:var(--ink);border-color:var(--ink)}
+table.tb{width:100%;border-collapse:collapse}
+table.tb th{font:500 16px/1 var(--f-sans);color:var(--muted);text-align:left;padding:14px 22px;border-bottom:1px solid var(--rule)}
+table.tb td{padding:18px 22px;border-bottom:1px solid #EFEEEA;font-variant-numeric:tabular-nums}
+table.tb tr.hl td{background:#FBF3DB;color:var(--ink);font-weight:600}
+table.tb td.num{text-align:right}
+.tag{display:inline-block;font:500 16px/1 var(--f-sans);padding:5px 9px;border-radius:5px;white-space:nowrap}
+.tag.gris{color:var(--t-gris);background:var(--t-gris-bg)} .tag.orange{color:var(--t-orange);background:var(--t-orange-bg)}
+.tag.vert{color:var(--t-vert);background:var(--t-vert-bg)} .tag.bleu{color:var(--t-bleu);background:var(--t-bleu-bg)}
+.tag.violet{color:var(--t-violet);background:var(--t-violet-bg)} .tag.rouge{color:var(--t-rouge);background:var(--t-rouge-bg)}
+/* kanban */
+.colonnes{display:flex;gap:18px;padding:18px 22px 22px;align-items:flex-start}
+.col{flex:1;background:var(--bg2);border-radius:10px;padding:12px}
+.col-tete{display:flex;justify-content:space-between;font:600 17px/1 var(--f-sans);margin:4px 4px 12px;color:var(--ink)}
+.col-tete small{font:400 16px var(--f-mono);color:var(--muted)}
+.carte{background:#fff;border:1px solid var(--rule);border-radius:8px;padding:12px 14px;margin-bottom:10px;font:500 19px/1.3 var(--f-sans);color:var(--ink)}
+.carte small{display:flex;justify-content:space-between;margin-top:8px;font:400 16px var(--f-mono);color:var(--muted)}
+.carte.hl{border-color:var(--ink);box-shadow:0 0 0 2px var(--ink)}
+.carte.exclue{opacity:.55;text-decoration:line-through}
+/* grands chiffres en serif */
+.serif-chiffre{font:400 150px/.9 var(--f-serif);letter-spacing:-.02em;color:var(--ink)}
+/* intercalaire : panneau de couleur arrondi */
+.panneau{left:48px;right:48px;top:48px;bottom:48px;border-radius:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.panneau .num{font:700 170px/1 var(--f-main);color:var(--ink)}
+.panneau h2{font:400 120px/1 var(--f-serif);letter-spacing:-.015em;color:var(--ink)}
+.panneau p{font:400 26px/1.45 var(--f-sans);color:var(--text);max-width:760px;margin-top:22px}
+/* couverture question */
+.question{left:220px;right:220px;top:50%;transform:translateY(-55%);text-align:center;font:400 110px/1.08 var(--f-serif);letter-spacing:-.015em;color:var(--ink)}
+.question i{font-style:italic}
+.signe{left:0;right:0;bottom:70px;text-align:center;font:400 20px/1.4 var(--f-mono);color:var(--muted)}
+.pied{left:160px;right:160px;bottom:40px;display:flex;justify-content:space-between;font:400 17px/1 var(--f-mono);color:var(--muted)}

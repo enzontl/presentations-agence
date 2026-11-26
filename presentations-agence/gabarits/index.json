@@ -298,5 +298,45 @@
   "image": "aucune",
   "description": "Diff : lignes rouges supprimées, vertes ajoutées, message de commit",
   "fichier": "gabarits/brutalisme-web/diff.html"
+ },
+ {
+  "style": "espace-de-travail",
+  "id": "question-surlignee",
+  "type": "cover",
+  "forme": "typo",
+  "fond": "clair",
+  "image": "aucune",
+  "description": "La question du deck en grand serif, deux mots surlignés qui se tracent l'un après l'autre",
+  "fichier": "gabarits/espace-de-travail/question-surlignee.html"
+ },
+ {
+  "style": "espace-de-travail",
+  "id": "intercalaire-panneau",
+  "type": "sommaire",
+  "forme": "typo",
+  "fond": "panneau",
+  "image": "aucune",
+  "description": "Panneau pastel arrondi plein cadre, numéro manuscrit, titre de partie en serif",
+  "fichier": "gabarits/espace-de-travail/intercalaire-panneau.html"
+ },
+ {
+  "style": "espace-de-travail",
+  "id": "base-tableau",
+  "type": "repartition",
+  "forme": "table",
+  "fond": "clair",
+  "image": "aucune",
+  "description": "Chiffres en cartouches au-dessus d'une base de données en vue Tableau, lignes révélées en sous-étapes",
+  "fichier": "gabarits/espace-de-travail/base-tableau.html"
+ },
+ {
+  "style": "espace-de-travail",
+  "id": "kanban",
+  "type": "etapes",
+  "forme": "objet",
+  "fond": "clair",
+  "image": "aucune",
+  "description": "Base de données en vue kanban : colonnes par priorité, carte surlignée, carte exclue barrée",
+  "fichier": "gabarits/espace-de-travail/kanban.html"
  }
 ]

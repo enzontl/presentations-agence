@@ -1,0 +1,31 @@
+<!-- gabarit espace-de-travail/kanban
+     type : etapes · forme : objet · fond : clair
+     image : aucune
+     Base de données en vue Tableau de bord (kanban) : colonnes par priorité, cartes avec points et responsable, une carte surlignée, une carte barrée (ce qu'on refuse)
+     Le texte et les chiffres sont des exemples (Kōri, Valmont) : tout remplacer. -->
+<section class="slide" data-section="Le plan">
+  <div class="tete">
+    <p class="kicker" data-anim="rise">ce qu'on refuse</p>
+    <h2 class="titre" data-anim="rise" style="--i:1">34 points pour lancer. <mark class="surligneur" style="--surligneur:var(--nh-rouge);--i:2">Zéro e-commerce.</mark></h2>
+    <p class="preuve" data-anim="rise" style="--i:2"><b>21 points</b> indispensables · la boutique en ligne <code>US-9</code> attend la saison 2.</p>
+  </div>
+  <div class="base" style="left:220px;top:380px;width:1480px;--i:3" data-anim="rise">
+    <div class="base-tete"><b>Backlog du lancement</b><span class="meta">9 cartes · 34 pts · 1 exclue</span></div>
+    <div class="onglets"><span class="on">Tableau de bord</span><span>Liste</span></div>
+    <div class="colonnes">
+      <div class="col"><div class="col-tete">Indispensable <small>21 pts</small></div>
+        <div class="carte hl">Recette et infusion 48 h<small><span>US-1 · Léa</span><span>8 pts</span></small></div>
+        <div class="carte">Contrat torréfacteur<small><span>US-2 · Malo</span><span>5 pts</span></small></div>
+        <div class="carte">Canette et étiquette<small><span>US-3 · Inès</span><span>8 pts</span></small></div></div>
+      <div class="col"><div class="col-tete">Important <small>10 pts</small></div>
+        <div class="carte">Présentoir épicerie<small><span>US-4 · Malo</span><span>5 pts</span></small></div>
+        <div class="carte">Dégustations en boutique<small><span>US-5 · Léa</span><span>5 pts</span></small></div></div>
+      <div class="col"><div class="col-tete">Plus tard <small>3 pts</small></div>
+        <div class="carte">Pack de 6<small><span>US-6 · Inès</span><span>3 pts</span></small></div></div>
+      <div class="col"><div class="col-tete">Exclu <small>13 pts</small></div>
+        <div class="carte exclue">Boutique en ligne<small><span>US-9 · Malo</span><span>13 pts</span></small></div></div>
+    </div>
+  </div>
+  <p class="pied"><span>Données fictives, test du skill</span><span class="pageno"></span></p>
+  <aside class="notes">La carte barrée montre ce que l'équipe refuse de faire : c'est souvent la preuve la plus forte d'un plan.</aside>
+</section>

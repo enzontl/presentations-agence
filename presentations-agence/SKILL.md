@@ -1,6 +1,6 @@
 ---
 name: presentations-agence
-description: "Crée, refait ou améliore une présentation de niveau agence, sans look généré par IA : deck, slides, pitch deck, keynote, soutenance, oral, business case, talk, deck investisseurs ou comex, présentation client, restitution d'étude, rapport ou PDF transformé en slides, slides à partir des photos ou graphiques de l'utilisateur. À utiliser même pour une demande courte qui ne parle pas de design (« fais-moi une présentation », « j'ai besoin de slides pour… », « make a pitch deck »), dès qu'un nombre de slides ou une date d'oral est donné, et quand un deck fait générique ou trop IA. Propose 8 styles tirés d'univers réels (éditorial objet réel, studio sombre, rapport suisse, une de journal, affiche sérigraphie, magazine de mode, data-journalisme, brutalisme web) avec fond avant forme, vraies photos traitées, rendu PNG vérifié, script dans les notes, export HTML. Pas pour : seulement un script oral, corriger des notes, convertir un PPTX en PDF, résumer un document, un graphique isolé, un design system d'app."
+description: "Crée, refait ou améliore une présentation de niveau agence, sans look généré par IA : deck, slides, pitch deck, keynote, soutenance, oral, business case, talk, deck investisseurs ou comex, présentation client, restitution d'étude, rapport ou PDF transformé en slides, slides à partir des photos ou graphiques de l'utilisateur. À utiliser même pour une demande courte qui ne parle pas de design (« fais-moi une présentation », « j'ai besoin de slides pour… », « make a pitch deck »), dès qu'un nombre de slides ou une date d'oral est donné, et quand un deck fait générique ou trop IA. Propose 9 styles tirés d'univers réels (objet réel, studio sombre, rapport suisse, une de journal, sérigraphie, magazine de mode, data-journalisme, brutalisme web, espace de travail) avec fond avant forme, vraies photos traitées, rendu PNG vérifié, script dans les notes, export HTML. Pas pour : seulement un script oral, corriger des notes, convertir un PPTX en PDF, résumer un document, un graphique isolé, un design system d'app."
 ---
 
 # Présentations de niveau agence
@@ -29,7 +29,7 @@ Sans argument : un deck neuf, avec le procédé complet ci-dessous. Avec une com
 
 Une demande en langage naturel qui correspond à une commande (« critique mon deck », « rends-le plus punchy », « mes slides de chiffres sont plates ») suit la même procédure.
 
-## Les 8 styles
+## Les 9 styles
 
 | Style | Fichier | Univers réel | Registre | Fond dominant |
 | --- | --- | --- | --- | --- |
@@ -41,6 +41,7 @@ Une demande en langage naturel qui correspond à une commande (« critique mon d
 | Magazine de mode | `references/magazine-de-mode.md` | Couvertures et éditoriaux de magazines, lookbooks | Premium, image | Blanc et photo pleine page |
 | Data-journalisme | `references/data-journalisme.md` | Enquêtes graphiques de la presse | Démonstratif | Papier clair |
 | Brutalisme web | `references/brutalisme-web.md` | Premiers sites web, docs techniques, terminaux | Brut, tech, ironique | Blanc, noir, bleu lien |
+| Espace de travail | `references/espace-de-travail.md` | Outils de travail en équipe (type Notion) : bases de données, kanban, surligneurs | Méthodique, doux, preuves de pilotage | Blanc et pastels |
 
 ## Choisir le style
 
@@ -56,6 +57,7 @@ Une demande en langage naturel qui correspond à une commande (« critique mon d
 | Mode, beauté, design, art de vivre, marque à forte image | Magazine de mode | La photo domine, le texte se fait rare et élégant |
 | Étude, enquête, mémoire, analyse de marché, beaucoup de chiffres | Data-journalisme | Chaque slide démontre avec un graphique annoté |
 | Produit tech, outil pour développeurs, startup, public geek | Brutalisme web | Les codes bruts du web parlent à ce public, avec humour |
+| Gestion de projet, plan de lancement, backlog, budget, risques, soutenance en équipe | Espace de travail | Les objets de pilotage (kanban, Gantt, matrice) deviennent les preuves |
 
 ### Selon le public
 
@@ -65,7 +67,8 @@ Une demande en langage naturel qui correspond à une commande (« critique mon d
 | Direction, investisseurs, conseil | Rapport suisse, Studio sombre, Data-journalisme | Affiche sérigraphie |
 | Client créatif, agence, marque | Objet réel, Magazine de mode, Sérigraphie | Rapport suisse, trop froid |
 | Grand public, conférence, salle large | Une de journal, Objet réel, Sérigraphie | Data-journalisme trop dense |
-| Développeurs, équipes produit | Brutalisme web, Data-journalisme | Magazine de mode |
+| Développeurs, équipes produit | Brutalisme web, Data-journalisme, Espace de travail | Magazine de mode |
+| Jury de gestion de projet, comité de pilotage | Espace de travail, Rapport suisse | Affiche sérigraphie |
 
 ### Selon la marque
 
@@ -331,6 +334,21 @@ Valables pour tous les styles. Chaque fichier de style ajoute les siens.
 - Des chiffres sans source.
 - Du blanc pur #FFFFFF et du noir pur #000000 en grands aplats, sauf si le style l'exige (brutalisme web).
 
+## Mise en scène (export autonome)
+
+L'export (`scripts/export.py`) ajoute une vraie mise en scène, pilotée par de simples attributs dans le HTML. Elle vient du deck « Singulier. » (référence du style Espace de travail), mais sert dans tous les styles.
+
+| Effet | Comment | Quand |
+| --- | --- | --- |
+| **Visuel persistant** | Donner le même `style="view-transition-name:plan"` à l'objet sur plusieurs slides de suite : l'export le fait glisser et se transformer d'une slide à l'autre (View Transitions), sans rejouer son entrée | Le même plan, la même matrice ou le même graphique qui change d'état : zone surlignée, avant puis après, autre angle |
+| **Sous-étapes** | `data-etape="1"`, `"2"`… sur des éléments : ils apparaissent un à un avant de passer à la slide suivante, et restent visibles quand on revient en arrière | Les lignes d'un tableau, les cartes d'une file, les points d'une démonstration |
+| **Mots un par un** | `data-anim="mots"` sur un titre | Titres de partie, phrase de fin |
+| **Surligneur qui se trace** | `<mark class="surligneur" style="--surligneur:#FFE89E">mot</mark>` | Le groupe de mots qui porte la preuve dans un titre |
+| **Sens du retour** | Automatique : en revenant en arrière, les entrées viennent d'en haut | Toujours |
+| **Progression par partie** | `<body class="deck" data-progression>` : une barre découpée selon les `data-section` | Decks longs, soutenances minutées |
+
+Au clavier, en plus des flèches : `O` vue d'ensemble par partie (cliquer pour sauter), `P` vue présentateur dans une autre fenêtre (minuteur, titre de la slide suivante, notes en grand, synchronisée avec l'écran projeté), `N` notes, `F` plein écran. Le rendu PNG (`rendu.py`) montre l'état final de chaque slide, sous-étapes comprises.
+
 ## Export HTML autonome
 
 Pour partager hors de Claude, envoyer par mail ou intégrer dans un outil comme Notion :
@@ -339,7 +357,7 @@ Pour partager hors de Claude, envoyer par mail ou intégrer dans un outil comme 
 python scripts/export.py mon-deck/deck.html --out mon-deck/deck-autonome.html
 ```
 
-Le script assemble tout dans un seul fichier : feuilles de style incluses, images converties en WebP (1920 px max, qualité 80) et intégrées en base64, polices intégrées en base64, scripts externes intégrés. Il ajoute une navigation au clavier (flèches, espace, Page suivante, clic), `N` pour afficher les notes, `F` pour le plein écran, une mise à l'échelle à la taille de la fenêtre, et écrit les numéros de page en dur. Compter environ 0,5 Mo par slide. Le fichier s'ouvre hors ligne le jour de l'oral.
+Le script assemble tout dans un seul fichier : feuilles de style incluses, images converties en WebP (1920 px max, qualité 80) et intégrées en base64, polices intégrées en base64, scripts externes intégrés. Il ajoute une navigation au clavier (flèches, espace, Page suivante, clic), `N` notes, `O` vue d'ensemble, `P` vue présentateur, `F` plein écran, la mise en scène ci-dessus, une mise à l'échelle à la taille de la fenêtre, et écrit les numéros de page en dur. Compter environ 0,5 Mo par slide. Le fichier s'ouvre hors ligne le jour de l'oral.
 
 ### PDF et PowerPoint
 

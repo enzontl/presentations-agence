@@ -1,0 +1,29 @@
+<!-- gabarit espace-de-travail/base-tableau
+     type : repartition · forme : table · fond : clair
+     image : aucune
+     Trois chiffres en cartouches au-dessus d'une base de données en vue Tableau, une ligne surlignée, révélée en sous-étapes
+     Le texte et les chiffres sont des exemples (Kōri, Valmont) : tout remplacer. -->
+<section class="slide" data-section="Le modèle">
+  <div class="tete">
+    <p class="kicker" data-anim="rise">chaque centime compte</p>
+    <h2 class="titre" data-anim="rise" style="--i:1">Sur 3,20 €, <mark class="surligneur" style="--surligneur:var(--nh-bleu);--i:2">1,20 € vont au distributeur.</mark></h2>
+    <p class="preuve" data-anim="rise" style="--i:2"><b>38 %</b> du prix public, contre <b>18 %</b> pour le café torréfié · TVA <b>5,5 %</b>.</p>
+  </div>
+  <div style="left:220px;top:390px;width:1480px;display:flex;gap:20px;--i:3" data-anim="rise">
+    <div class="base" style="flex:1.6;padding:18px 24px;overflow:visible;background:#FFF8E1;display:flex;align-items:baseline;justify-content:space-between"><span class="serif-chiffre" style="font-size:112px">1,20 €</span><span class="tag orange">Distributeur</span></div>
+    <div class="base" style="flex:1;padding:18px 24px;display:flex;align-items:baseline;justify-content:space-between"><span class="serif-chiffre" style="font-size:60px">0,60 €</span><span class="tag vert">Marge Kōri</span></div>
+    <div class="base" style="flex:1;padding:18px 24px;display:flex;align-items:baseline;justify-content:space-between"><span class="serif-chiffre" style="font-size:60px">0,58 €</span><span class="tag gris">Café</span></div>
+  </div>
+  <div class="base" style="left:220px;top:570px;width:1480px">
+    <div class="base-tete"><b>Prix d'une canette</b><span class="meta">7 postes · 3,20 € TTC</span></div>
+    <div class="onglets"><span class="on">Tableau</span><span>Graphique</span></div>
+    <table class="tb">
+      <tr><th>Poste</th><th>Qui</th><th>Statut</th><th class="num">Montant</th></tr>
+      <tr data-etape="1" class="hl"><td>Marge distributeur</td><td>Épicerie fine</td><td><span class="tag orange">À négocier</span></td><td class="num">1,20 €</td></tr>
+      <tr data-etape="2"><td>Marge Kōri</td><td>Kōri</td><td><span class="tag vert">Validé</span></td><td class="num">0,60 €</td></tr>
+      <tr data-etape="3"><td>Café vert et torréfaction</td><td>Torréfacteur</td><td><span class="tag bleu">Contrat</span></td><td class="num">0,58 €</td></tr>
+    </table>
+  </div>
+  <p class="pied"><span>Données fictives, test du skill</span><span class="pageno"></span></p>
+  <aside class="notes">Les trois lignes du tableau apparaissent une par une (sous-étapes). Source : décomposition du prix public, données fictives.</aside>
+</section>

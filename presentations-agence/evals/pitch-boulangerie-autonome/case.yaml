@@ -1,6 +1,6 @@
 schema_version: "1.1"
 name: pitch-boulangerie-autonome
 expected_outcome: |
-  Un dossier pain-lune/ avec un deck.html de 8 slides dans un des 8 styles du skill (probablement éditorial objet réel),
+  Un dossier pain-lune/ avec un deck.html de 8 slides dans un des 9 styles du skill (probablement éditorial objet réel),
   layouts tirés par tirage.py, sans aucun tic bloquant au lint, rendu en PNG, chaque slide avec un titre qui affirme
   et des notes d'orateur, chiffres marqués fictifs.
