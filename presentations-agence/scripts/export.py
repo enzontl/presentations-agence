@@ -178,12 +178,15 @@ NAV_JS = """
     count.textContent=(cur+1)+' / '+slides.length;history.replaceState(null,'','#'+(cur+1));
     if(prog)parts.forEach(function(p){p.el.style.setProperty('--p',cur>p.b?'100%':cur<p.a?'0%':((cur-p.a+1)/(p.b-p.a+1)*100)+'%')});
     if(pv){pv.querySelector('#pv-n').textContent=(cur+1)+' / '+slides.length;pv.querySelector('#pv-s').textContent=slides[cur+1]?titre(slides[cur+1]):'Fin';pv.querySelector('#pv-notes').textContent=notes.textContent;}
-    if(bc&&!sync)bc.postMessage({i:cur,sub:sub});}
+    if(bc&&!sync)bc.postMessage({i:cur,sub:sub});
+    emit();}
+  // un monde persistant (canvas derrière toutes les slides) écoute cet événement pour déplacer sa caméra
+  function emit(){document.dispatchEvent(new CustomEvent('deck:slide',{detail:{i:cur,etape:sub,slide:slides[cur],pose:slides[cur].dataset.pose||null}}));}
   function show(i,dir){i=Math.max(0,Math.min(slides.length-1,i));if(i===cur)return;dir=dir||(i>cur?1:-1);
     var reduit=matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(document.startViewTransition&&!reduit&&cur>=0)document.startViewTransition(function(){apply(i,dir)});else apply(i,dir);}
-  function fwd(){var et=etapes(slides[cur]);if(sub<et.length){et[sub++].classList.add('vu');if(bc)bc.postMessage({i:cur,sub:sub});return;}show(cur+1,1);}
-  function back(){var et=etapes(slides[cur]);if(sub>0){et[--sub].classList.remove('vu');if(bc)bc.postMessage({i:cur,sub:sub});return;}show(cur-1,-1);}
+  function fwd(){var et=etapes(slides[cur]);if(sub<et.length){et[sub++].classList.add('vu');if(bc)bc.postMessage({i:cur,sub:sub});emit();return;}show(cur+1,1);}
+  function back(){var et=etapes(slides[cur]);if(sub>0){et[--sub].classList.remove('vu');if(bc)bc.postMessage({i:cur,sub:sub});emit();return;}show(cur-1,-1);}
   if(bc)bc.onmessage=function(e){sync=true;if(e.data.i!==cur)apply(e.data.i,e.data.i>cur?1:-1);var et=etapes(slides[cur]);sub=e.data.sub;et.forEach(function(x,k){x.classList.toggle('vu',k<sub)});sync=false;};
   addEventListener('resize',fit);
   addEventListener('keydown',function(e){if(e.metaKey||e.ctrlKey||e.altKey)return;var k=e.key;

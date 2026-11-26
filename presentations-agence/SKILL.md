@@ -1,6 +1,6 @@
 ---
 name: presentations-agence
-description: "Crée, refait ou améliore une présentation de niveau agence, sans look généré par IA : deck, slides, pitch deck, keynote, soutenance, oral, business case, talk, deck investisseurs ou comex, présentation client, restitution d'étude, rapport ou PDF transformé en slides, slides à partir des photos ou graphiques de l'utilisateur. À utiliser même pour une demande courte qui ne parle pas de design (« fais-moi une présentation », « j'ai besoin de slides pour… », « make a pitch deck »), dès qu'un nombre de slides ou une date d'oral est donné, et quand un deck fait générique ou trop IA. Propose 9 styles tirés d'univers réels (objet réel, studio sombre, rapport suisse, une de journal, sérigraphie, magazine de mode, data-journalisme, brutalisme web, espace de travail) avec fond avant forme, vraies photos traitées, rendu PNG vérifié, script dans les notes, export HTML. Pas pour : seulement un script oral, corriger des notes, convertir un PPTX en PDF, résumer un document, un graphique isolé, un design system d'app."
+description: "Crée, refait ou améliore une présentation de niveau agence, sans look généré par IA : deck, slides, pitch deck, keynote, soutenance, oral, business case, talk, deck investisseurs ou comex, présentation client, restitution d'étude, rapport ou PDF transformé en slides, slides à partir des photos ou graphiques de l'utilisateur. À utiliser même pour une demande courte qui ne parle pas de design (« fais-moi une présentation », « j'ai besoin de slides pour… », « make a pitch deck »), dès qu'un nombre de slides ou une date d'oral est donné, et quand un deck fait générique ou trop IA. Propose 10 styles tirés d'univers réels (objet réel, studio, rapport suisse, journal, sérigraphie, mode, data, brutalisme, espace de travail, heure bleue) avec fond avant forme, vraies photos traitées, rendu PNG vérifié, script dans les notes, export HTML. Pas pour : seulement un script oral, corriger des notes, convertir un PPTX en PDF, résumer un document, un graphique isolé, un design system d'app."
 ---
 
 # Présentations de niveau agence
@@ -29,7 +29,7 @@ Sans argument : un deck neuf, avec le procédé complet ci-dessous. Avec une com
 
 Une demande en langage naturel qui correspond à une commande (« critique mon deck », « rends-le plus punchy », « mes slides de chiffres sont plates ») suit la même procédure.
 
-## Les 9 styles
+## Les 10 styles
 
 | Style | Fichier | Univers réel | Registre | Fond dominant |
 | --- | --- | --- | --- | --- |
@@ -42,6 +42,7 @@ Une demande en langage naturel qui correspond à une commande (« critique mon d
 | Data-journalisme | `references/data-journalisme.md` | Enquêtes graphiques de la presse | Démonstratif | Papier clair |
 | Brutalisme web | `references/brutalisme-web.md` | Premiers sites web, docs techniques, terminaux | Brut, tech, ironique | Blanc, noir, bleu lien |
 | Espace de travail | `references/espace-de-travail.md` | Outils de travail en équipe (type Notion) : bases de données, kanban, surligneurs | Méthodique, doux, preuves de pilotage | Blanc et pastels |
+| Heure bleue | `references/heure-bleue.md` | Un lieu en 3D au crépuscule, derrière tout le deck, qui se construit au fil du récit | Cinématographique, ambitieux | Nuit bleue, lumière ambre |
 
 ## Choisir le style
 
@@ -58,6 +59,7 @@ Une demande en langage naturel qui correspond à une commande (« critique mon d
 | Étude, enquête, mémoire, analyse de marché, beaucoup de chiffres | Data-journalisme | Chaque slide démontre avec un graphique annoté |
 | Produit tech, outil pour développeurs, startup, public geek | Brutalisme web | Les codes bruts du web parlent à ce public, avec humour |
 | Gestion de projet, plan de lancement, backlog, budget, risques, soutenance en équipe | Espace de travail | Les objets de pilotage (kanban, Gantt, matrice) deviennent les preuves |
+| Un lieu qui se construit (immobilier, ville, usine, magasin) et un pitch long en équipe | Heure bleue | Le monde qui avance est la métaphore du récit |
 
 ### Selon le public
 
@@ -283,7 +285,7 @@ python scripts/rendu.py mon-deck/deck.html --out mon-deck/renders
 
 Le script rend chaque slide en PNG 1920x1080 (Chrome sans interface, animations coupées, polices locales), assemble `planche.png` et écrit `rapport.txt` avec les problèmes détectés : titre sur 3 lignes ou plus, élément qui sort de la slide, texte coupé dans sa boîte, image manquante, police non chargée, texte trop petit. Option `--slides 3,5` pour ne rendre que certaines slides.
 
-Le script écrit aussi `titres.txt` (les titres seuls, pour tester le récit), `planche-floue.png` (les masses, comme en plissant les yeux) et, dans le rapport, la rubrique « Rythme » : les slides voisines qui se ressemblent trop. Une section `.a-construire` restante est signalée en tête.
+Le script signale aussi les textes de deux éléments différents qui se chevauchent (marquer `data-chevauche` sur une superposition voulue). Il écrit aussi `titres.txt` (les titres seuls, pour tester le récit), `planche-floue.png` (les masses, comme en plissant les yeux) et, dans le rapport, la rubrique « Rythme » : les slides voisines qui se ressemblent trop. Une section `.a-construire` restante est signalée en tête.
 
 Puis :
 
@@ -345,6 +347,10 @@ L'export (`scripts/export.py`) ajoute une vraie mise en scène, pilotée par de 
 | **Mots un par un** | `data-anim="mots"` sur un titre | Titres de partie, phrase de fin |
 | **Surligneur qui se trace** | `<mark class="surligneur" style="--surligneur:#FFE89E">mot</mark>` | Le groupe de mots qui porte la preuve dans un titre |
 | **Sens du retour** | Automatique : en revenant en arrière, les entrées viennent d'en haut | Toujours |
+| **Accent qui s'allume** | `<em class="allume">phrase clé</em>` (couleur `--lumiere`) : prend la lumière une fois les mots du titre posés | La phrase clé d'un titre sur fond sombre |
+| **Marques au crayon** | `<svg class="crayon cercle" viewBox="0 0 200 100" preserveAspectRatio="none"><path pathLength="1" d="…"/></svg>` dans un parent en `position:relative`. Tracés : cercle `M14 52 C 8 20, 70 4, 128 7 C 186 10, 199 34, 194 56 C 188 84, 138 98, 92 96 C 40 94, 4 80, 9 50 C 12 30, 52 14, 100 13`, souligne `M2 50 C 50 42, 110 56, 198 46`, barre `M0 54 C 60 47, 130 58, 200 49`, coche `M30 58 L 74 92 L 172 8`, flèche `M4 52 C 70 40, 130 62, 188 50 M 162 30 L 190 50 L 160 72` | Entourer le chiffre qui compte, barrer ce qu'on refuse, cocher ce qu'on garde |
+| **Monde persistant** | Un `<canvas id="monde">` fixe derrière les slides écoute l'événement `deck:slide` (index, sous-étape, `data-pose`) et déplace sa caméra : voir l'annexe de `references/heure-bleue.md` | Un lieu 3D qui évolue pendant tout le deck |
+| **Démo en direct** | Une `<iframe>` vers la démo dans la slide, avec un message « lancer la démo : … » derrière, et une exécution enregistrée qui prend le relais après 15 secondes | Montrer le produit sans quitter le deck |
 | **Progression par partie** | `<body class="deck" data-progression>` : une barre découpée selon les `data-section` | Decks longs, soutenances minutées |
 
 Au clavier, en plus des flèches : `O` vue d'ensemble par partie (cliquer pour sauter), `P` vue présentateur dans une autre fenêtre (minuteur, titre de la slide suivante, notes en grand, synchronisée avec l'écran projeté), `N` notes, `F` plein écran. Le rendu PNG (`rendu.py`) montre l'état final de chaque slide, sous-étapes comprises.
@@ -379,7 +385,7 @@ python scripts/exporter.py mon-deck/deck.html --pdf --pptx
 - [ ] Aucun titre sur 3 lignes, aucun débordement : `rapport.txt` vide et planche vérifiée.
 - [ ] Critique écrite, note de 8 ou plus sans plafond (`references/critique.md`).
 - [ ] Aucun texte d'exemple de gabarit oublié (chercher « Kōri », « Valmont », « données fictives »).
-- [ ] Chaque chiffre a sa source dans les notes ou en pied de slide.
+- [ ] Chaque chiffre a sa source dans les notes ou en pied de slide, et sa ligne de calcul dans la feuille de calcul (`references/recit.md`, section 10).
 - [ ] Espaces insécables en place (aucun `%`, `€` ou `?` seul en début de ligne).
 - [ ] Script de l'orateur dans les notes de chaque slide.
 - [ ] Les slides validées par l'utilisateur n'ont pas été retouchées.

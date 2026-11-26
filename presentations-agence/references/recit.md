@@ -80,3 +80,22 @@ Problème, preuve que le problème est grand, la solution, en quoi elle est meil
 ## 8. Préparer les questions
 
 Lister dans `fond.md` les 5 questions les plus probables du public et la slide d'annexe ou le chiffre qui y répond. Un jury pose presque toujours : la source d'un chiffre clé, la limite de la méthode, le coût, le calendrier, et « pourquoi vous ».
+
+## 9. Le script scène par scène (deck à plusieurs voix)
+
+Pour un oral à plusieurs, écrire un fichier `script.md` à côté du deck, dans ce format (repris d'un pitch à cinq voix de 20 minutes) :
+
+- **En tête** : la durée, la distribution (qui dit quelles scènes), le nombre de mots par orateur. Compter 130 mots parlés par minute : 2 600 mots pour 20 minutes, environ 500 par orateur à cinq.
+- **Une section par scène** : `## SCÈNE 4 · CE QUE SEUL X POSSÈDE`, puis `**3:40 à 4:50 · PRÉNOM**`.
+- **À L'ÉCRAN** : ce que montre la slide, en une phrase. Pas dit à voix haute.
+- **Le texte parlé**, mot pour mot, avec `[clic]` à chaque sous-étape.
+- *(Didascalies en italique entre parenthèses)* : gestes, passage de relais, démo. Pas dites.
+- **Si on demande** : les réponses préparées aux questions probables sur cette scène.
+
+Le texte de chaque scène va tel quel dans les notes de sa slide : la vue présentateur (`P`) l'affiche pendant l'oral.
+
+## 10. La feuille de calcul et les annexes de secours
+
+- **Chaque chiffre a sa ligne de calcul**, à la fin du script ou dans `fond.md` : le chiffre, la formule, chaque hypothèse dite à voix haute, la source. Exemple : « 6,3 % de contacts qualifiés = 45 000 formulaires × 15 % de bons contacts ÷ 107 000 visiteurs des pages programme ». Un jury qui demande « d'où vient ce chiffre ? » doit recevoir la ligne en dix secondes.
+- **Les annexes de secours** viennent après la slide de fin, jamais pendant l'oral : le détail complet (les dix cas d'usage, la matrice chiffrée) et une slide « Chaque chiffre, et d'où il vient ». On y saute avec la vue d'ensemble (`O`).
+- **La démo en direct a un plan B** : une exécution enregistrée qui s'affiche d'elle-même si le service ne répond pas dans les 15 secondes, et une slide qui dit comment la relancer.

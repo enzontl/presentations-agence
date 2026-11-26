@@ -1,12 +1,12 @@
 # Présentations agence
 
-Un skill Claude qui fabrique des présentations de niveau agence, dans 9 styles tirés d'univers visuels réels, sans le look « généré par IA ».
+Un skill Claude qui fabrique des présentations de niveau agence, dans 10 styles tirés d'univers visuels réels, sans le look « généré par IA ».
 
 Le principe : chaque deck emprunte les codes d'un objet qui existe vraiment (un ticket de caisse, une une de journal, une affiche sérigraphiée, un rapport annuel suisse). Le format raconte le concept avant même que le texte soit lu. C'est l'inverse d'un template, qui part d'une grille vide et la remplit.
 
 ![Test 1 : pitch marketing, 8 styles](examples/planches/planche-kori.jpg)
 
-## Les 9 styles
+## Les 10 styles
 
 | Style | Univers réel | Pour |
 | --- | --- | --- |
@@ -19,6 +19,7 @@ Le principe : chaque deck emprunte les codes d'un objet qui existe vraiment (un 
 | Data-journalisme | Enquêtes graphiques de la presse | Études, mémoires, analyses chiffrées |
 | Brutalisme web | Premiers sites web, docs techniques, terminaux | Produits tech, publics développeurs |
 | Espace de travail | Outils de travail en équipe (type Notion) : bases de données, kanban, surligneurs | Gestion de projet, plans de lancement, soutenances en équipe |
+| Heure bleue | Un lieu en 3D au crépuscule derrière tout le deck, qui se construit au fil du récit | Pitchs longs autour d'un lieu : immobilier, ville, magasin, usine |
 
 Chaque style a ses gabarits validés dans [`presentations-agence/gabarits/`](presentations-agence/gabarits) et sa fiche dans [`presentations-agence/references/`](presentations-agence/references) : palette avec le rôle de chaque couleur, polices Google Fonts, éléments signature, traitement des images, 12 à 16 layouts, ton, interdits et check avant de livrer.
 
@@ -35,7 +36,7 @@ Chaque style a ses gabarits validés dans [`presentations-agence/gabarits/`](pre
 
 ## Mise en scène
 
-L'export HTML autonome ajoute, par simples attributs : un visuel qui persiste et se transforme d'une slide à l'autre (`view-transition-name`), des sous-étapes (`data-etape`), des titres mot par mot, un surligneur qui se trace, une barre de progression par partie, une vue d'ensemble (`O`) et une vue présentateur synchronisée avec minuteur et notes (`P`).
+L'export HTML autonome ajoute, par simples attributs : un visuel qui persiste et se transforme d'une slide à l'autre (`view-transition-name`), des sous-étapes (`data-etape`), des titres mot par mot, un surligneur qui se trace, une barre de progression par partie, une vue d'ensemble (`O`), une vue présentateur synchronisée avec minuteur et notes (`P`), des marques au crayon qui se dessinent, une phrase clé qui s'allume, et un événement pour piloter un monde 3D persistant derrière les slides.
 
 ## Commandes
 

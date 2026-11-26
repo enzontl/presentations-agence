@@ -52,3 +52,22 @@ mark.surligneur{color:inherit;padding:0 .14em;border-radius:.18em;box-decoration
 @keyframes surligne{from{background-size:0% 78%}to{background-size:100% 78%}}
 .deck-live .slide.is-active mark.surligneur{animation:surligne .6s cubic-bezier(.2,0,0,1) both;animation-delay:calc(.35s + var(--i,0) * 120ms)}
 @media (prefers-reduced-motion:reduce){.deck-live .slide mark.surligneur{animation:none!important}}
+
+/* Accent qui s'allume une fois le titre posé, comme une fenêtre au crépuscule :
+   <em class="allume">la phrase clé</em>  (couleur : --lumiere, défaut ambre) */
+.allume{font-style:normal;color:var(--lumiere,#FFC46B);text-shadow:0 0 .45em color-mix(in srgb,var(--lumiere,#FFC46B) 40%,transparent)}
+@keyframes allume{from{color:inherit;text-shadow:none}to{color:var(--lumiere,#FFC46B);text-shadow:0 0 .45em color-mix(in srgb,var(--lumiere,#FFC46B) 40%,transparent)}}
+.deck-live .slide.is-active .allume{animation:allume 1.2s ease both;animation-delay:calc(.9s + var(--i,0) * 120ms)}
+
+/* Marque au crayon qui se dessine sur un mot ou un chiffre (le parent en position:relative) :
+   <svg class="crayon cercle" viewBox="0 0 200 100" preserveAspectRatio="none"><path pathLength="1" d="…"/></svg>
+   Tracés : voir SKILL.md, « Mise en scène ». Couleur : --crayon. Pas de vector-effect : il casse pathLength et le tracé. */
+svg.crayon{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+svg.crayon.cercle{left:-9%;top:-16%;width:118%;height:132%}
+svg.crayon.souligne{top:auto;bottom:-.32em;height:.5em}
+svg.crayon.barre{top:25%;height:50%}
+svg.crayon path{fill:none;stroke:var(--crayon,#FF6A45);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1}
+svg.crayon.barre path,svg.crayon.souligne path{stroke-width:9} /* boîte basse : le trait est écrasé, on compense */
+@keyframes crayon{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.deck-live .slide.is-active svg.crayon path{animation:crayon .6s cubic-bezier(.6,0,.2,1) both;animation-delay:calc(.6s + var(--i,0) * 120ms)}
+@media (prefers-reduced-motion:reduce){.deck-live .slide .allume,.deck-live .slide svg.crayon path{animation:none!important}}

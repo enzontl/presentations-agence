@@ -36,6 +36,7 @@ CHECK_JS = r"""
     const R = s.getBoundingClientRect();
     const stamps = [...s.querySelectorAll('.stamp,.tampon')];
     const missingFonts = new Set();
+    const textes = [];
     s.querySelectorAll('*').forEach(el => {
       if (el.closest('.notes')) return;
       const cs = getComputedStyle(el);
@@ -54,6 +55,7 @@ CHECK_JS = r"""
       if ((cs.overflowY === 'hidden' || cs.overflow === 'hidden') && el !== s &&
           el.scrollHeight > el.clientHeight + 3 && (el.textContent || '').trim() && !bleed)
         issues.push('texte coupé dans sa boîte : ' + desc(el));
+      if (textOf(el) && !el.closest('[data-chevauche],.bleed') && !(el.closest('svg') && el.tagName !== 'text')) textes.push({el, r});
       if (textOf(el)) {
         const fs = parseFloat(cs.fontSize);
         if (fs < 16 && !el.closest('.source,.credit,.legende,.small-ok'))
@@ -70,6 +72,16 @@ CHECK_JS = r"""
       }
       if (el.tagName === 'IMG' && !(el.complete && el.naturalWidth)) issues.push('image manquante : ' + el.getAttribute('src'));
     });
+    // textes qui se chevauchent (deux éléments distincts, aucun ne contient l'autre)
+    for (let a = 0; a < textes.length; a++) for (let b = a + 1; b < textes.length; b++) {
+      const A = textes[a], B = textes[b];
+      if (A.el.contains(B.el) || B.el.contains(A.el)) continue;
+      const ix = Math.max(0, Math.min(A.r.right, B.r.right) - Math.max(A.r.left, B.r.left));
+      const iy = Math.max(0, Math.min(A.r.bottom, B.r.bottom) - Math.max(A.r.top, B.r.top));
+      // l'interligne fait se toucher des lignes voisines : on ne compte que les vrais recouvrements
+      const h = Math.min(A.r.height, B.r.height), w = Math.min(A.r.width, B.r.width);
+      if (h > 0 && w > 0 && iy > 0.45 * h && ix > 0.2 * w) issues.push('textes qui se chevauchent : ' + desc(A.el) + ' / ' + desc(B.el));
+    }
     missingFonts.forEach(f => issues.push(`police non déclarée, repli système : ${f}`));
     if (s.classList.contains('a-construire')) issues.unshift('SECTION À CONSTRUIRE : layout pas encore fait (voir le commentaire dans la section)');
     errors.forEach(f => issues.push(`police en erreur : ${f}`));
