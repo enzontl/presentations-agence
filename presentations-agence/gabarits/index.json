@@ -338,5 +338,45 @@
   "image": "aucune",
   "description": "Base de données en vue kanban : colonnes par priorité, carte surlignée, carte exclue barrée",
   "fichier": "gabarits/espace-de-travail/kanban.html"
+ },
+ {
+  "style": "heure-bleue",
+  "id": "cover-monde",
+  "type": "cover",
+  "forme": "objet3d",
+  "fond": "sombre",
+  "image": "aucune (monde 3D)",
+  "description": "Le lieu à l'état de plan en fil de fer, titre en deux lignes dont la fin s'allume, trois chiffres en bas",
+  "fichier": "gabarits/heure-bleue/cover-monde.html"
+ },
+ {
+  "style": "heure-bleue",
+  "id": "chiffre-monde",
+  "type": "chiffre-cle",
+  "forme": "objet3d",
+  "fond": "sombre",
+  "image": "aucune (monde 3D)",
+  "description": "Le lieu allumé, chiffre héros entouré au crayon, deux chiffres subordonnés, étiquette épinglée au bâtiment",
+  "fichier": "gabarits/heure-bleue/chiffre-monde.html"
+ },
+ {
+  "style": "heure-bleue",
+  "id": "cover-monde-allume",
+  "type": "cover",
+  "forme": "objet3d",
+  "fond": "sombre",
+  "image": "aucune (monde 3D)",
+  "description": "La caméra arrive devant le lieu qui s'allume, titre et trois chiffres à gauche",
+  "fichier": "gabarits/heure-bleue/cover-monde-allume.html"
+ },
+ {
+  "style": "heure-bleue",
+  "id": "chiffre-monde-plongee",
+  "type": "plusieurs-chiffres",
+  "forme": "objet3d",
+  "fond": "sombre",
+  "image": "aucune (monde 3D)",
+  "description": "Vue plongeante, tout est allumé, chiffre héros souligné au crayon, étiquette épinglée",
+  "fichier": "gabarits/heure-bleue/chiffre-monde-plongee.html"
  }
 ]

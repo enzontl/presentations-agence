@@ -112,8 +112,12 @@ def main():
         print(f"\n{page} existe déjà : rien écrit (--force pour le refaire).")
         return
     commun = (g / "commun.html").read_text() if (g / "commun.html").exists() else ""
-    sprite = commun[commun.find("<svg"):commun.find("</svg>") + 6] if "<svg width=\"0\"" in commun else ""
-    scripts = commun[commun.find("<script"):] if "<script" in commun else ""
+    # commun.html : après le commentaire d'en-tête, ce qui précède le premier <script> va en début de body
+    # (sprite SVG, canvas du monde 3D), les scripts en fin de body
+    corps = commun.split("-->", 1)[1] if commun.lstrip().startswith("<!--") else commun
+    cut = corps.find("<script")
+    sprite = (corps[:cut] if cut >= 0 else corps).strip()
+    scripts = corps[cut:].strip() if cut >= 0 else ""
     sections = []
     for s in slides:
         if s.get("source") == "gabarit" and s.get("fichier"):

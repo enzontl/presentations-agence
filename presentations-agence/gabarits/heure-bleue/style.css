@@ -1,0 +1,26 @@
+/* heure-bleue : jetons et classes du style. Copier en style.css dans le dossier du deck. */
+:root{
+  --nuit:#0B1433; --feuille:#142048; --g1:#F1F3F9; --g2:#B6BFD8; --g3:#8590B2;
+  --filet:rgba(241,243,249,.16); --lumiere:#FFC46B; --crayon:#FF6A45; --plan:#9DBCFF;
+  --f-titre:"Archivo Narrow",sans-serif; --f-texte:"IBM Plex Sans",sans-serif; --f-mono:"IBM Plex Mono",monospace;
+}
+.slide{background:var(--nuit);color:var(--g1);font-family:var(--f-texte);font-variant-numeric:tabular-nums}
+.deck-live .slide{background:transparent}
+#monde{display:none}
+.deck-live #monde{display:block;position:fixed;inset:0;width:100vw;height:100vh;z-index:-1}
+.deck-live .monde-still{display:none}
+.voile{inset:0;background:linear-gradient(90deg,rgba(6,10,28,.9) 0,rgba(6,10,28,.62) 38%,rgba(6,10,28,0) 66%)}
+.surtitre{font:500 20px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--g3)}
+.titre{font:600 76px/1.02 var(--f-titre);letter-spacing:-.012em;text-wrap:balance}
+.lede{font:400 26px/1.42 var(--f-texte);color:var(--g2)}
+.chiffres{display:flex;gap:56px;align-items:flex-end}
+.chiffres b{display:block;font:600 64px/1 var(--f-titre);color:var(--g1)}
+.chiffres span{display:block;font:400 20px/1.3 var(--f-texte);color:var(--g3);margin-top:8px;white-space:nowrap}
+.heros{font:600 230px/.86 var(--f-titre);letter-spacing:-.02em;position:relative;display:inline-block}
+.epingle{width:0;height:0}
+.epingle i{position:absolute;left:-7px;top:-7px;width:14px;height:14px;border-radius:50%;background:var(--lumiere);box-shadow:0 0 18px rgba(255,180,90,.7)}
+.epingle .carte{position:absolute;left:22px;top:-40px;white-space:nowrap;background:rgba(6,10,28,.82);border-top:2px solid var(--lumiere);padding:12px 16px 14px}
+.epingle .carte b{display:block;font:600 28px/1.05 var(--f-titre)}
+.epingle .carte small{display:block;font:400 18px/1.3 var(--f-texte);color:var(--g2);margin-top:4px}
+.source{font:500 16px/1 var(--f-mono);color:var(--g3)}
+.noms{font:400 20px/1.4 var(--f-texte);color:var(--g2)}

@@ -4,7 +4,7 @@ Un skill Claude qui fabrique des présentations de niveau agence, dans 10 styles
 
 Le principe : chaque deck emprunte les codes d'un objet qui existe vraiment (un ticket de caisse, une une de journal, une affiche sérigraphiée, un rapport annuel suisse). Le format raconte le concept avant même que le texte soit lu. C'est l'inverse d'un template, qui part d'une grille vide et la remplit.
 
-![Test 1 : pitch marketing, cover et slide de chiffres dans 8 styles](examples/planches/planche-kori.jpg)
+![Test 1 : pitch marketing, cover et slide de chiffres dans 10 styles](examples/planches/planche-kori.jpg)
 
 ## Les 10 styles
 
@@ -21,7 +21,7 @@ Le principe : chaque deck emprunte les codes d'un objet qui existe vraiment (un 
 | Espace de travail | Outils de travail en équipe (type Notion) : bases de données, kanban, surligneurs | Gestion de projet, plans de lancement, soutenances en équipe |
 | Heure bleue | Un lieu en 3D au crépuscule derrière tout le deck, qui se construit au fil du récit | Pitchs longs autour d'un lieu : immobilier, ville, magasin, usine |
 
-Chaque style a sa fiche dans [`presentations-agence/references/`](presentations-agence/references) : palette avec le rôle de chaque couleur, polices Google Fonts, éléments signature, traitement des images, 12 à 16 layouts, ton, interdits et check avant de livrer. Neuf styles ont aussi des gabarits validés dans [`presentations-agence/gabarits/`](presentations-agence/gabarits) (34 en tout) ; Heure bleue, qui demande un monde 3D sur mesure, n'a que sa fiche et son annexe technique.
+Chaque style a sa fiche dans [`presentations-agence/references/`](presentations-agence/references) : palette avec le rôle de chaque couleur, polices Google Fonts, éléments signature, traitement des images, 12 à 16 layouts, ton, interdits et check avant de livrer. Les 10 styles ont aussi des gabarits validés dans [`presentations-agence/gabarits/`](presentations-agence/gabarits) (38 en tout). Ceux d'Heure bleue embarquent le moteur du monde 3D (three.js) : une seule ville persistante, une pose de caméra par slide.
 
 ## Ce que fait le skill
 
@@ -29,7 +29,7 @@ Chaque style a sa fiche dans [`presentations-agence/references/`](presentations-
 2. **Les questions de style** sous forme de choix, avec deux styles recommandés et une option audacieuse.
 3. **Les images** : recherche Unsplash sans contourner les protections anti-bot, téléchargement en haute définition, traitement Python propre au style (étalonnage, dégradé sous le texte, grain, trame deux encres, tramage 1 bit).
 4. **Le tirage des layouts** : un script tire au sort un layout par slide (jamais deux formes identiques côte à côte, jamais le même layout deux fois, en évitant ceux des projets récents). Un modèle qui choisit seul revient toujours au même layout.
-5. **Un template monté depuis 34 gabarits validés**, avec une slide « règles », rempli avec le vrai contenu. Chaque fond d'impact revient une slide sur trois pour casser l'uniformité.
+5. **Un template monté depuis 38 gabarits validés**, avec une slide « règles », rempli avec le vrai contenu. Chaque fond d'impact revient une slide sur trois pour casser l'uniformité.
 6. **La boucle de rendu et de critique** : chaque slide rendue en PNG, une planche contact, une planche floue pour juger les masses, le test des titres seuls, la détection des textes qui se chevauchent et des slides voisines trop semblables, puis une critique notée sur les captures (sept passes, plafonds, trois rounds au plus).
 7. **Le contrôle des tics** : un détecteur statique bloque les signes du look généré (dégradé violet, emojis, titres étiquettes, chiffres égaux sans héros, image répétée, texte de gabarit oublié) et signale le reste.
 8. **La porte de livraison** : un deck ne sort pas sans critique écrite, sans rendu à jour, ou avec plus d'une paire de slides voisines semblables.
@@ -89,11 +89,9 @@ Le skill a été testé sur deux sujets fictifs, avec une cover et une slide de 
 - **Kōri**, une marque fictive de cold brew en canette (pitch marketing) ;
 - **le bilan 2025 des bibliothèques de Valmont**, une ville fictive (présentation sobre).
 
-Toutes les données sont fictives. Les decks de test sont dans [`examples/decks/`](examples/decks), un par style, plus un deck de démonstration du style Espace de travail : ouvre un fichier dans le navigateur, puis flèches pour avancer, `O` vue d'ensemble, `P` vue présentateur, `N` notes, `F` plein écran.
+Toutes les données sont fictives. Les decks de test sont dans [`examples/decks/`](examples/decks), un par style (10 decks, les deux sujets dans chacun) : ouvre un fichier dans le navigateur, puis flèches pour avancer, `O` vue d'ensemble, `P` vue présentateur, `N` notes, `F` plein écran.
 
-![Test 2 : présentation sobre, cover et slide de chiffres dans 8 styles](examples/planches/planche-valmont.jpg)
-
-![Style Espace de travail : question, panneau de partie, base de données, kanban](examples/planches/planche-espace-de-travail.jpg)
+![Test 2 : présentation sobre, cover et slide de chiffres dans 10 styles](examples/planches/planche-valmont.jpg)
 
 ## Crédits photo
 
